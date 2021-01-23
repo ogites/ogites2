@@ -1,14 +1,16 @@
-<!--
-  Page d'accueil du site
+<!-- 
+    Page de présentation du contexte du projet
 -->
 
 <?php  
   // Ajout du header
   require_once 'head.php';
+  // Lien vers les méthodes
+  require_once 'inc/manager-db.php';
   // Initialisation de la session
   session_start(); 
 ?>
-<!-- Navbar de la page d'accueil -->
+<!-- Navbar de la page A propos -->
 <header>
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <strong><a class="navbar-brand" href="index.php">Ô'GÎTES</a></strong>
@@ -18,7 +20,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
@@ -43,15 +45,14 @@
         {
         ?>
         <li class="nav-item">
-          <a class="nav-link" href="about.php">À propos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link btn btn-success" href="login-system/connexion.php"><span style="color:white;">Connexion</span></a>
+          <a class="nav-link" href="login-system/connexion.php">Connexion</a>
         </li>
         <?php
         }
         ?>
-        
+        <li class="nav-item active">
+          <a class="nav-link" href="about.php">À propos</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -59,34 +60,33 @@
 
 <!-- Contenu de la page -->
 <main role="main" class="flex-shrink-0">
-  <div class="container-fluid" id="index">
-    <center>
-      <!-- Headline -->
-      <h2>Trouvez votre lieu favoris parmi une selection des meilleurs gîtes de Guadeloupe</h2>
-    </center>
     <div class="container">
-      <br>
-      <center>
-        <!-- Barre de recherche -->
-        <form action="view_gites.php" method="POST">
-          <div class="input-group mb-2 border rounded-pill p-1 w-50">
-            <input type="search" placeholder="Chercher un lieu" aria-describedby="button-addon3"
-              name="searchbar" class="form-control bg-none border-0">
-            <div class="input-group-append border-0">
-              <button id="button-addon3" type="submit" class="btn btn-link text-success"><i
-                  class="fa fa-search"></i></button>
-            </div>
-          </div>
-          <button class="btn btn-success" type="submit">Recherche</button>
-        </form>
-        <br><br>
-        <!-- Défilement automatique d'images de gîtes -->
-        <div class="slideshow">
-            <?php include 'assets/slideshow.php'; ?>
-        </div>
-      </center>
+        <center>
+            <img src="images/new-logo.png" alt="logo_ogites" width="25%" height="25%">
+        </center>
+        <br>
+        <center>
+            <h4>Cette production entre dans le cadre d'un projet réalisé avec <strong>la méthodologie SCRUM.</strong></h4>
+            <h4>Il s'agit d'un site de réservation de gîtes en Guadeloupe.</h4>
+        </center>
+        <br>
+        <h4>L'équipe est composée en deux parties.</h4>
+        <h4><strong>Les titulaires :</strong></h4>
+        <ul>
+            <li><h4>COLAT Oren (SCRUM Master)</h4></li>
+            <li><h4>GOUPTAR-TICKET Yanissa (PRODUCT Owner)</h4></li>
+            <li><h4>JOLO Jonaël</h4></li>
+            <li><h4>COUVIN Quetsiah</h4></li>
+            <li><h4>BIANAY Elrich</h4></li>
+            <li><h4>KANCEL Jonathan</h4></li>
+        </ul>
+        <h4><strong>La sous-traitance :</strong></h4>
+        <ul>
+            <li><h4>JEAN-POMBO Jennyfer</h4></li>
+            <li><h4>NAQUIN Kristie</h4></li>
+            <li><h4>DUHAMEL Jorane</h4></li>
+        </ul>
     </div>
-  </div>
 </main>
 
 <?php

@@ -44,7 +44,7 @@
 
                     if(isset($_SESSION['pseudo']))
                     {
-                        header('refresh:2; url=compte.php');
+                        header('refresh:2; url=../index.php');
                     } 
                     
                 }

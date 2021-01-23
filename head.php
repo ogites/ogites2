@@ -14,6 +14,7 @@
   // Connexion à la base données
   require_once 'login-system/config.php';
   ?>
+  
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 18 jan. 2021 à 23:32
+-- Généré le : Dim 24 jan. 2021 à 00:41
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -64,7 +64,8 @@ INSERT INTO `gites` (`id_gites`, `libelle`, `description`, `localisation`, `link
 (3, 'Gîte Bois-Cannelle', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/gite-bois-cannelle.fr.html'),
 (4, 'Carre Royal', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/carre-royal.fr.html?label=gen173nr-1FCAMYgwQoWkIIZGVzaGFpZXNIDVgEaFqIAQGYAQ24ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApCAhv4FwAIB0gIkNTE2NTEzYTEtOWZkOC00NzIwLWFiMGUtN2NhYThiNTk1MzYz2AIF4AIB;sid=ac06ad128edb29b74d8164fe58ead413'),
 (5, 'ALPINA', 'Gîte à Petit-Bourg', 'Petit-Bourg', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/alpinia-971g4411'),
-(6, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041');
+(6, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041'),
+(7, 'Bungalow à Grande Anse', 'Bungalow piscine privée à 900 m de Grande Anse', 'Deshaies', 'https://www.airbnb.fr/rooms/35685092?source_impression_id=p3_1611441404_Mw45FipKMopzq%2Bln&guests=1&adults=1');
 
 -- --------------------------------------------------------
 
@@ -74,10 +75,25 @@ INSERT INTO `gites` (`id_gites`, `libelle`, `description`, `localisation`, `link
 
 CREATE TABLE `images_gites` (
   `id_images_gites` int(11) NOT NULL,
-  `libelle` int(11) NOT NULL,
+  `libelle` text NOT NULL,
   `id_gites` int(11) NOT NULL,
-  `link_url` int(11) NOT NULL
+  `link_url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `images_gites`
+--
+
+INSERT INTO `images_gites` (`id_images_gites`, `libelle`, `id_gites`, `link_url`) VALUES
+(1, '', 7, 'https://a0.muscache.com/im/pictures/789dde0a-050d-4f44-997a-df8df428c387.jpg?im_w=1200'),
+(2, '', 7, 'https://a0.muscache.com/im/pictures/bbb3c78c-9c32-4c25-81f1-95dd81011d80.jpg?im_w=720'),
+(3, '', 7, 'https://a0.muscache.com/im/pictures/7607b93f-1f83-4013-a35c-0d1181e4c271.jpg?im_w=720'),
+(4, '', 4, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/145580953.webp?k=faff4834186fa9b2fe3998f3cf02d3f5ec8414ab5702baa511c03421cbbb24fc&o='),
+(5, '', 4, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/145419903.webp?k=41e1b175743d54ade8b762ee5550462eba51354a29031b05b89036bf821793b5&o='),
+(6, '', 4, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/145418641.webp?k=70c0048cf7ed664b203bda65cbbdc678a6f1b41dfe4c9e9a4a9efeb4a4fc95e8&o='),
+(7, '', 3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/228437146.webp?k=3f76c22fc0ab454ff7e73b2be63b9c82bbfef562eb8d8efb1da0aace03060b8f&o='),
+(8, '', 3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/228437239.webp?k=edea5e98764dfc5a109b5997335e20be5f567abac4cc9f68b570bcb03779466a&o='),
+(9, '', 3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/228437297.webp?k=155ab7f20dbf35748ecfaa5aef229e262efee974c0157ed4c7720b644585f33f&o=');
 
 -- --------------------------------------------------------
 
@@ -166,13 +182,13 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `gites`
 --
 ALTER TABLE `gites`
-  MODIFY `id_gites` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_gites` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `images_gites`
 --
 ALTER TABLE `images_gites`
-  MODIFY `id_images_gites` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_images_gites` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
