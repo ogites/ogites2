@@ -12,7 +12,13 @@
         }
     }
 
+    // Connexion à la base de données
+    global $pdo;
     $pdo = bd_connect();
+    
+    // Chemin du dossier
+    global $root;
+    $root = 'localhost/ogites2';
 
     //Récupérer les gîtes en fonction de la ville
     function getGitesByVille($ville) {
@@ -31,6 +37,8 @@
 
     function header_page($onglet) 
     {
+        global $root;
+
         /*
         Fonction permettant d'ajouter le header en fonction du paramètre
         Liste des différents cas :
@@ -56,13 +64,13 @@
                             case 0:
                                 ?>
                                 <li class="nav-item">
-                  			        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                  			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
                 		        <li class="nav-item">
-                  			        <a href="presentation.php" class="nav-link">Présentation</a>
+                  			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
     	    			        <li class="nav-item">
-                		  	        <a class="nav-link" href="about.php">À propos</a>
+                		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
                             break;
@@ -71,13 +79,13 @@
                             case 1:
                                 ?>
                                 <li class="nav-item active">
-                  			        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                  			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
                 		        <li class="nav-item">
-                  			        <a href="presentation.php" class="nav-link">Présentation</a>
+                  			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
     	    			        <li class="nav-item">
-                		  	        <a class="nav-link" href="about.php">À propos</a>
+                		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
                             break;
@@ -86,13 +94,13 @@
                             case 2:
                                 ?>
                                 <li class="nav-item">
-                  			        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                  			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
                 		        <li class="nav-item active">
-                  			        <a href="presentation.php" class="nav-link">Présentation</a>
+                  			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
     	    			        <li class="nav-item">
-                		  	        <a class="nav-link" href="about.php">À propos</a>
+                		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
                             break;
@@ -101,13 +109,13 @@
                             case 3:
                                 ?>
                                 <li class="nav-item">
-                  			        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                  			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
                 		        <li class="nav-item">
-                  			        <a href="presentation.php" class="nav-link">Présentation</a>
+                  			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
     	    			        <li class="nav-item active">
-                		  	        <a class="nav-link" href="about.php">À propos</a>
+                		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
                             break;
@@ -117,15 +125,22 @@
                 		{
                 		?>
                 		<li class="nav-item dropdown">
-                		  	<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                		  	<a class="nav-link dropdown-toggle" href="index.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                 		    	aria-expanded="false" name="Dropdown">Mon compte</a>
                 		  	<div class="dropdown-menu" aria-labelledby="dropdown01">
-                		    	<a class="dropdown-item" href="all_reservation.php">Mes réservations</a>
-                		    	<a class="dropdown-item" href="login-system/param.php">Paramètres</a>
+                                <a class="dropdown-item" href="/ogites2/all_reservation.php">Mes réservations</a>
+                                <?php if ($_SESSION['id_categorie'] == 1)
+                                {
+                                ?>
+                                <a class="dropdown-item" href="/ogites2/admin/index.php">Espace Admin</a>
+                                <?php
+                                } 
+                                ?>
+                		    	<a class="dropdown-item" href="/ogites2/login-system/param.php">Paramètres</a>
                 		  	</div>
                 		</li>
                 		<li class="nav-item">
-    	    				<a class="nav-link" href="login-system/deconnexion.php">Déconnexion</a>
+    	    				<a class="nav-link" href="/ogites2/login-system/deconnexion.php">Déconnexion</a>
                 		</li>
                 		<?php
                 		}
@@ -133,7 +148,7 @@
                 		{
                 		?>
                 		<li class="nav-item">
-                		  	<a class="nav-link btn btn-success" href="login-system/connexion.php"><span style="color:white;">Connexion</span></a>
+                		  	<a class="nav-link btn btn-success" href="/ogites2/login-system/connexion.php"><span style="color:white;">Connexion</span></a>
                 		</li>
                 		<?php
                 		}

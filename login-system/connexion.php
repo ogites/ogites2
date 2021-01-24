@@ -39,6 +39,7 @@
                     $_SESSION['email'] = $resultat['email'];
                     $_SESSION['motDePasse'] = $resultat['mdp'];
                     $_SESSION['date'] = $resultat['date_inscription'];
+                    $_SESSION['id_categorie'] = $resultat['id_categorie'];
 
                     $messageReussi = 'Vous êtes connecté !';
 

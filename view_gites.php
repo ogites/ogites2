@@ -13,6 +13,10 @@
   {
       $ville = $_POST["searchbar"];
   }
+  else
+  {
+      $ville = "";
+  }
 ?>
 
 <main role="main" class="flex-shrink-0">
@@ -20,7 +24,7 @@
         <div class="container">
             <center>
               <!-- Barre de recherche -->
-                <form action="view_gites.php" method="POST">
+                <form action="view_gites.php?query=search" method="POST">
                     <div class="input-group mb-2 border rounded-pill p-1 w-50">
                         <input type="search" placeholder="Chercher un lieu" aria-describedby="button-addon3"
                             name="searchbar" class="form-control bg-none border-0"
@@ -32,6 +36,7 @@
                         </div>
                     </div>
                     <button class="btn btn-success" type="submit">Recherche</button>
+                    <a href="view_gites.php?query=all" class="btn btn-warning"><span style="color:white;">Voir tout</span></a>
                 </form>
             </center>
         </div>
@@ -39,15 +44,37 @@
         <!-- Affichage des gîtes -->
         <?php
         //  Liste des gîtes en fonction de la ville
-        $SQLParam = getGitesByVille($ville);
-        $pdo =bd_connect();
+        if ($_REQUEST["query"] == "search")
+        {
+            $SQLParam = getGitesByVille($ville);
+        }
+        else
+        {
+            $SQLParam = getAllGites();
+        }
+        
+        //$pdo =bd_connect();
         $Myresult = $pdo->query($SQLParam);
         $Myresult->setFetchMode(PDO::FETCH_ASSOC);
         $nb_result = $Myresult->rowCount();
         if ($nb_result > 0)
         {
         ?>
-            <h2>Résultat(s) pour <?php echo $ville ?></h2>
+        <br>
+            <?php
+            if ($ville == "")
+            {
+            ?>
+            <h2>Liste de tous les gîtes.</h2>
+            <?php
+            }
+            else
+            {
+            ?>
+            <h2>Résultat(s) pour <?php echo $ville ?>.</h2>
+            <?php
+            }
+            ?>
             <br>
             <div class="container">
                 <div class="row justify-content-start">
@@ -66,10 +93,27 @@
                                 $Myresult2 = $pdo->query($SQLParam2);
                                 $Myresult2->setFetchMode(PDO::FETCH_ASSOC);
                                 $images_gites = $Myresult2->fetch();
-                                $images_link = $images_gites["link_url"];
+                                $nb_images = $Myresult2->rowCount();
+                                if ($images_gites)
+                                {
+                                    $images_link = $images_gites["link_url"];
+                                }
                                 ?>
                                     <!-- Miniature du gîtes -->
+                                    <?php
+                                    if ($nb_images > 0)
+                                    {
+                                    ?>
                                     <img src="<?php echo $images_link; ?>" class="card-img-top" alt="image-gite" style="height:300px;">
+                                    <?php
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                    <h3 align="center">Aucune image.</h3>
+                                    <?php
+                                    }
+                                    ?>
                                     <div class="card-body">
                                         <!-- Titre du gîte -->
                                         <h5 class="card-title"><?php echo $Allresponse["libelle"] ?></h5>

@@ -21,7 +21,7 @@
 			<br>
 			<center>
 				<!-- Barre de recherche -->
-				<form action="view_gites.php" method="POST">
+				<form action="view_gites.php?query=search" method="POST">
 					<div class="input-group mb-2 border rounded-pill p-1 w-50">
 						<input type="search" placeholder="Chercher un lieu" aria-describedby="button-addon3"
 							name="searchbar" class="form-control bg-none border-0">
@@ -31,8 +31,10 @@
 							</button>
 						</div>
 					</div>
-					<button class="btn btn-success" type="submit">Recherche</button>
-				</form>
+                    <button class="btn btn-success" type="submit">Recherche</button>
+                    <a href="view_gites.php?query=all" class="btn btn-warning"><span style="color:white;">Voir tout</span></a>
+                </form>
+                
 				<br><br>
 				<!-- Défilement automatique d'images de gîtes -->
 				<div class="slideshow">
