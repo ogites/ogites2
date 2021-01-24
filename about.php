@@ -1,62 +1,14 @@
 <!-- 
     Page de présentation du contexte du projet
 -->
-
 <?php  
   // Ajout du header
   require_once 'head.php';
-  // Lien vers les méthodes
-  require_once 'inc/manager-db.php';
   // Initialisation de la session
   session_start(); 
+  // Navbar de la page A propos
+  header_page(3);
 ?>
-<!-- Navbar de la page A propos -->
-<header>
-  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <strong><a class="navbar-brand" href="index.php">Ô'GÎTES</a></strong>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-link">Présentation</a>
-        </li>
-        <?php 
-        if (isset($_SESSION['id_users']) AND isset($_SESSION['pseudo']))
-        {
-        ?>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" name="Dropdown">Mon compte</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Mes réservations</a>
-            <a class="dropdown-item" href="#">Paramètres</a>
-            <a class="dropdown-item" href="login-system/deconnexion.php">Déconnexion</a>
-          </div>
-        </li>
-        <?php
-        }
-        else
-        {
-        ?>
-        <li class="nav-item">
-          <a class="nav-link" href="login-system/connexion.php">Connexion</a>
-        </li>
-        <?php
-        }
-        ?>
-        <li class="nav-item active">
-          <a class="nav-link" href="about.php">À propos</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
 
 <!-- Contenu de la page -->
 <main role="main" class="flex-shrink-0">
@@ -90,8 +42,8 @@
 </main>
 
 <?php
-  // Ajout de script Javascript
-  require_once 'javascripts.php';
-  // Ajout du footer
-  require_once 'footer.php';
+	// Ajout de script Javascript
+	require_once 'javascripts.php';
+	// Ajout du footer
+	require_once 'footer.php';
 ?>

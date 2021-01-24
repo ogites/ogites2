@@ -1,47 +1,19 @@
 <!--
   Page de résultat du site
 -->
-
 <?php  
   // Ajout du header
   require_once 'head.php';
-  // Lien vers les méthodes
-  require_once 'inc/manager-db.php';
   // Initialisation de la session
   session_start(); 
+  // Navbar de la page de résultat
+  header_page(0);
 
   if (isset($_POST["searchbar"]))
   {
       $ville = $_POST["searchbar"];
   }
 ?>
-
-<!-- Navbar de la page de résultat -->
-<header>
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-        <strong><a class="navbar-brand" href="index.php">Ô'GÎTES</a></strong>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">Présentation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">À propos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login-system/connexion.php">Connexion</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <main role="main" class="flex-shrink-0">
     <div class="container-fluid">
@@ -107,7 +79,8 @@
                                         <strong><p class="card-text"><?php echo $Allresponse["description"] ?></p></strong>
                                         <br>
                                         <!-- Lien vers le site d'origine du gîte -->
-                                        <a target="_blank" href="<?php echo $Allresponse["link_url"] ?>" class="btn btn-outline-primary">Voir plus</a>
+                                        <a target="_blank" href="<?php echo $Allresponse["link_url"] ?>" class="btn btn-warning" style="color: white;">Voir plus</a>
+                                        <a href="info_gites.php" class="btn btn-success">Réserver</a>
                                     </div>
                                 </div>
                             </div>
@@ -127,3 +100,10 @@
         ?>
     </div>
 </main>
+
+<?php
+	// Ajout de script Javascript
+	require_once 'javascripts.php';
+	// Ajout du footer
+	require_once 'footer.php';
+?>
