@@ -64,7 +64,7 @@
                         else
                         {
                         ?>
-                        <td><a href="set_admin?id_users=<?php echo $info_users['id_users'] ?>" class="btn btn-danger">Définir comme admin</a></td>
+                        <td><a href="set_admin.php?id_users=<?php echo $info_users['id_users'] ?>" class="btn btn-danger">Définir comme admin</a></td>
                         <?php
                         }
                         ?>
