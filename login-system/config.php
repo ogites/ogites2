@@ -123,21 +123,23 @@
                         // Si l'utilisateur est connecté
                 		if (isset($_SESSION['id_users']) AND isset($_SESSION['pseudo']))
                 		{
-                		?>
-                		<li class="nav-item dropdown">
-                		  	<a class="nav-link dropdown-toggle" href="index.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                		    	aria-expanded="false" name="Dropdown">Mon compte</a>
-                		  	<div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="/ogites2/all_reservation.php">Mes réservations</a>
-                                <?php if ($_SESSION['id_categorie'] == 1)
-                                {
-                                ?>
-                                <a class="dropdown-item" href="/ogites2/admin/index.php">Espace Admin</a>
-                                <?php
-                                } 
-                                ?>
-                		    	<a class="dropdown-item" href="/ogites2/login-system/param.php">Paramètres</a>
-                		  	</div>
+                        ?>
+                        
+                        <?php 
+                        if ($_SESSION['id_categorie'] == 1)
+                        {
+                        ?>  
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ogites2/admin/index.php">Espace Admin</a>
+                            </li>
+                        <?php
+                        } 
+                        ?>
+                        <li class="nav-item">
+                            <a href="/ogites2/all_reservation.php" class="nav-link">Mes réservations</a>
+                        </li>
+                        <li class="nav-item">
+    	    				<a class="nav-link" href="/ogites2/login-system/param.php">Mon compte</a>
                 		</li>
                 		<li class="nav-item">
     	    				<a class="nav-link" href="/ogites2/login-system/deconnexion.php">Déconnexion</a>

@@ -1,5 +1,5 @@
 <?php 
-    require_once 'header-profil.php'
+    require_once '../head.php'
 ?>
 
 <?php
@@ -41,12 +41,12 @@
     }
 
 
-
+header_page(0);
 ?>
 
 <link rel="stylesheet" type="text/css" href="../scss/param.scss"/>
 
-<body>
+
 
     <div class="container">
         <div class="logo">
@@ -108,5 +108,3 @@
     
     </div>
 
-
-</body>

@@ -2,7 +2,7 @@
     Page d'accueil de l'espace administrateur.
 
     Cette espace permettra de faciliter l'ajout de gîte
-    ainsi que la gestion des utilisateurs et des réservation
+    ainsi que la gestion des utilisateurs et des réservations
 -->
 <?php  
 	// Ajout du header
@@ -10,7 +10,7 @@
     require_once 'config_admin.php';
 	// Initialisation de la session
     session_start(); 
-    header_admin(0);
+    header_admin(1);
 ?>
 
 <!-- Contenu de la page -->
@@ -18,17 +18,12 @@
 	<div class="container-fluid" id="index">
 		<center>
 			<!-- Headline -->
-			<h2>Bienvenue dans l'espace administrateur <strong><?php echo $_SESSION["nom"] . " " . $_SESSION["prenom"]; ?></strong></h2>
+			<h2>Bienvenue dans l'espace administrateur <br>
+                <strong><?php echo $_SESSION["nom"] . " " . $_SESSION["prenom"]; ?></strong>
+            </h2>
 		</center>
 		<div class="container">
             <br>
-            <style>
-                .center {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            </style>
             <div class="card-deck center">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-body">
@@ -90,14 +85,6 @@
 				<br><br>
             </center>
             <!-- Boutons d'actions -->
-            <style>
-                .white {
-                    color: #fff;
-                }
-                .stretched-link:hover {
-                    text-decoration-color: #fff;
-                }
-            </style>
             <div class="card-deck">
                 <!-- Ajouter un gîte -->
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">

@@ -1,0 +1,21 @@
+.white {
+    color:#fff;
+}
+
+.black {
+    color:#000;
+}
+
+.black:hover {
+    color:#000;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stretched-link:hover {
+    text-decoration-color: #fff;
+}
