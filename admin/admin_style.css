@@ -19,3 +19,11 @@
 .stretched-link:hover {
     text-decoration-color: #fff;
 }
+
+.left {
+    float:left;
+}
+
+.right {
+    float:right;
+}

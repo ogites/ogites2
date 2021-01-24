@@ -1,5 +1,5 @@
 <!--
-    Page d'accueil avec la liste des gîtes
+    Page avec la liste des gîtes
 -->
 <?php  
 	// Ajout du header
@@ -13,7 +13,13 @@
 <!-- Contenu de la page -->
 <main role="main" class="flex-shrink-0">
     <div class="container-fluid" id="index">
-        <h1><strong>LISTE DES GÎTES</strong></h1>
+        <!-- Titre de la page -->
+        <h1 style="float: left;"><strong>LISTE DES GÎTES</strong></h1>
+        <!-- Bouton Retour -->
+        <a href="index.php" class="btn btn-info btn-lg" style="float: right;"><strong class="white">RETOUR</strong></a>
+        <!-- Nettoyage du flottement -->
+        <div style="clear: both;"></div>
+
         <div class="container">
             <?php
             // Récupérer la liste des gîtes
@@ -26,7 +32,7 @@
             {
             ?>
             <br>
-            <table class="table" style="width: 100%;">
+            <table class="table table-hover" style="width: 100%;">
                 <thead>
                     <tr class="bg-success">
                         <th class="white" style="width: 5%;">#</th>
@@ -51,11 +57,6 @@
                     <?php
                     }
                     ?>
-                    <tr style="text-align: center;">
-                        <td colspan="5">
-                            <a href="ajout_gite.php" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus white"></i> Ajouter</a>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <?php
@@ -63,12 +64,13 @@
             else
             {
             ?>
-            <h1>Aucun gîte dans la base de données.</h1>
+            <h3 align="center">Aucun gîte dans la base de données.</h3>
             <br>
-            <a href="ajout_gite.php" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus white"></i> Ajouter</a>
             <?php
             }
             ?>
+            <a href="ajout_gite.php?origin=list" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus white"></i> Ajouter</a>
+            
         </div>
     </div>
 </main>

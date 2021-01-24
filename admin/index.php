@@ -24,6 +24,7 @@
 		</center>
 		<div class="container">
             <br>
+            <!-- Éléments d'informations -->
             <div class="card-deck center">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-body">
@@ -89,7 +90,7 @@
                 <!-- Ajouter un gîte -->
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-body white">
-                        <a href="ajout_gite.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-plus white"></i> Ajouter un gîte</h5></a>
+                        <a href="ajout_gite.php?origin=index" class="stretched-link"><h5 class="card-title white"><i class="fa fa-plus white"></i> Ajouter un gîte</h5></a>
                         <p class="card-text white">Ajouter un nouveau gîte dans la base de données.</p>
                         <p class="card-text white"><i class="fa fa-exclamation-triangle white"></i> Associer au moins une image par gîte.</p>
                     </div>
@@ -98,7 +99,7 @@
                 <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                     <div class="card-body white">
                         <a href="liste_gite.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-th-list white"></i> Liste des gîtes</h5></a>
-                        <p class="card-text white">Voir la liste des gîtes enregistrées.</p>
+                        <p class="card-text white">Voir la liste des gîtes enregistrées afin de les gérer.</p>
                     </div>
                 </div>
                 <!-- Gérer les réservations -->
