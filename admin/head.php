@@ -12,6 +12,7 @@ $root = $_SERVER["DOCUMENT_ROOT"] . '/ogites2/';
     <meta name="description" content="">
 
     <link rel="stylesheet" href="admin_style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css">
 
     <title>Ô'GÎTES</title>
 
