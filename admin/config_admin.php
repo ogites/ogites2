@@ -92,7 +92,7 @@ function header_admin($onglet)
                         <a class="nav-link" href="#">Mon Compte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ogites2/login-system/deconnexion.php">Déconnexion</a>
+                        <a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>
                     </li>
                     <?php
                     }

@@ -19,6 +19,10 @@
     {
         $libelle = $_POST["libelle"];
     }
+    if (isset($_POST["nb_personnes_max"]))
+    {
+        $nb_personnes_max = $_POST["nb_personnes_max"];
+    }
     if(isset($_POST["localisation"]))
     {
         $localisation = $_POST["localisation"];
@@ -49,8 +53,8 @@
     else // Si le gîte n'existe pas
     {
         // Insertion dans la base de données
-        $SQL_insert1 = "INSERT INTO gites (libelle, description, localisation, link_url)"
-        . " VALUES ('$libelle', '$description', '$localisation', '$link_url')";
+        $SQL_insert1 = "INSERT INTO gites (libelle, description, localisation, link_url, nb_personnes_max)"
+        . " VALUES ('$libelle', '$description', '$localisation', '$link_url', '$nb_personnes_max')";
         echo $SQL_insert1;
         $Myinsert1 = $pdo->exec($SQL_insert1);
 

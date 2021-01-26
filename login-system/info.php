@@ -5,6 +5,8 @@
     header_page(0);
 ?>
 
+<script src="https://kit.fontawesome.com/a076d05399.js"> </script>
+
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">
         <h1>PAGE : MON COMPTE AVEC LES PARAMETRES</h1>
@@ -13,7 +15,7 @@
         <div class="row">
             
             <div class="col-4">
-                <table class="table table-striped">
+            <table class="table table-striped">
                     <style>
                         td a:focus,
                         td a {
@@ -57,9 +59,26 @@
             </div>
            
             <div class="col-8">
-               <h2>
-                <center>Bienvenue sur Ô'gîtes</cente>
-               </h2>
+            <?php
+                if(isset($_SESSION['id_users']) AND isset($_SESSION['pseudo'])){ 
+            ?>
+            <table class="table table-striped table-primary">
+                <thead>
+                    <tr>
+                        <th><h3><center>Les informations sur vous : <?php echo ucfirst($_SESSION["pseudo"]); ?></center></h3></th>
+                    </tr>
+                </thead>
+            </table>
+        
+            <i class="fas fa-user"> Nom :</i><br> <?php echo ucfirst($_SESSION["nom"]); ?>
+            <br><br>
+            <i class="fas fa-user"> Prenom :</i><br> <?php echo ucfirst($_SESSION["prenom"]); ?>
+            <br><br>
+            <i class="fas fa-envelope"> Adresse mail :</i> <br><?php echo $_SESSION["email"]; ?>
+            <br><br>
+            
+        
+            <?php } ?>
             </div>
             
         </div>

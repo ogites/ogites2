@@ -57,18 +57,22 @@
                 ?>
                 <br>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-5">
                         <label for="libelle">Libelle</label>
                         <input type="text" class="form-control" name="libelle" placeholder="Libelle du gîte" required>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-2">
+                        <label for="libelle">Nb. personnes Max</label>
+                        <input type="text" class="form-control" name="nb_personnes_max" required>
+                    </div>
+                    <div class="form-group col-md-5">
                         <label for="libelle">Localisation</label>
                         <input type="text" class="form-control" name="localisation" placeholder="Localisation du gîte" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" name="description" placeholder="Description du gîte" required>
+                    <textarea rows="6" type="text" class="form-control" name="description" placeholder="Description du gîte" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="link_url">Lien du gîte</label>
