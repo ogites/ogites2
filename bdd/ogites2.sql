@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 27 jan. 2021 à 02:16
+-- Généré le : mer. 27 jan. 2021 à 03:26
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -60,14 +60,14 @@ CREATE TABLE `gites` (
 --
 
 INSERT INTO `gites` (`id_gites`, `libelle`, `description`, `localisation`, `link_url`, `nb_personnes_max`) VALUES
-(1, 'Villa Bagatelle', 'Gîte à Sainte-Rose', 'Sainte-Rose', 'https://www.gites.fr/gites_villa-bagatelle_sainte-rose_46386.htm', 0),
-(2, 'La Koumbala', 'Gîtes à Bouillante', 'Bouillante', 'https://www.gites.fr/gites_la-koumbala_bouillante_58031.htm', 0),
-(3, 'Gîte Bois-Cannelle', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/gite-bois-cannelle.fr.html', 0),
-(4, 'Carre Royal', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/carre-royal.fr.html?label=gen173nr-1FCAMYgwQoWkIIZGVzaGFpZXNIDVgEaFqIAQGYAQ24ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApCAhv4FwAIB0gIkNTE2NTEzYTEtOWZkOC00NzIwLWFiMGUtN2NhYThiNTk1MzYz2AIF4AIB;sid=ac06ad128edb29b74d8164fe58ead413', 0),
-(5, 'ALPINA', 'Gîte à Petit-Bourg', 'Petit-Bourg', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/alpinia-971g4411', 0),
-(6, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041', 0),
-(7, 'Bungalow à Grande Anse', 'Bungalow piscine privée à 900 m de Grande Anse', 'Deshaies', 'https://www.airbnb.fr/rooms/35685092?source_impression_id=p3_1611441404_Mw45FipKMopzq%2Bln&guests=1&adults=1', 0),
-(8, 'Gîte Kan-nida', 'Gîtes de Charme', 'Abymes', 'https://www.gitesdefrance-guadeloupe.com/location-vacances-Gite-a-Les-Abymes-Guadeloupe-971G2110.html', 0),
+(1, 'Villa Bagatelle', 'Gîte à Sainte-Rose', 'Sainte-Rose', 'https://www.gites.fr/gites_villa-bagatelle_sainte-rose_46386.htm', 3),
+(2, 'La Koumbala', 'Gîtes à Bouillante', 'Bouillante', 'https://www.gites.fr/gites_la-koumbala_bouillante_58031.htm', 2),
+(3, 'Gîte Bois-Cannelle', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/gite-bois-cannelle.fr.html', 4),
+(4, 'Carre Royal', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/carre-royal.fr.html?label=gen173nr-1FCAMYgwQoWkIIZGVzaGFpZXNIDVgEaFqIAQGYAQ24ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApCAhv4FwAIB0gIkNTE2NTEzYTEtOWZkOC00NzIwLWFiMGUtN2NhYThiNTk1MzYz2AIF4AIB;sid=ac06ad128edb29b74d8164fe58ead413', 7),
+(5, 'ALPINA', 'Gîte à Petit-Bourg', 'Petit-Bourg', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/alpinia-971g4411', 3),
+(6, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041', 2),
+(7, 'Bungalow à Grande Anse', 'Bungalow piscine privée à 900 m de Grande Anse', 'Deshaies', 'https://www.airbnb.fr/rooms/35685092?source_impression_id=p3_1611441404_Mw45FipKMopzq%2Bln&guests=1&adults=1', 10),
+(8, 'Gîte Kan-nida', 'Gîtes de Charme', 'Abymes', 'https://www.gitesdefrance-guadeloupe.com/location-vacances-Gite-a-Les-Abymes-Guadeloupe-971G2110.html', 2),
 (9, 'Test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test', 'https://www.lipsum.com/', 6);
 
 -- --------------------------------------------------------
@@ -115,9 +115,17 @@ CREATE TABLE `reservation` (
   `date_debut` date NOT NULL,
   `date_fin` date NOT NULL,
   `nb_personnes` int(11) NOT NULL,
+  `date_reserv` date DEFAULT NULL,
   `id_gites` int(11) NOT NULL,
   `id_users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id_reservation`, `libelle`, `date_debut`, `date_fin`, `nb_personnes`, `date_reserv`, `id_gites`, `id_users`) VALUES
+(2, 'Gîte Bois-Cannelle', '2021-01-26', '2021-01-28', 3, '2021-01-26', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -204,7 +212,7 @@ ALTER TABLE `images_gites`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`

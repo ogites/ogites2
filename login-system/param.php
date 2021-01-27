@@ -7,8 +7,7 @@
 
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">
-        <h1>MON COMPTE</h1>
-        <br>
+        
 		<div class="container">
         <div class="row">
             
@@ -51,20 +50,25 @@
                         <tr>
                             <td><a href="change_pass.php">Changer de mot de passe</a></td>
                         </tr>
-                    
+
                     </tbody>
                 </table>
             </div>
            
             <div class="col-8">
                <h2>
-                <center>Bienvenue sur Ô'GÎTES</cente>
+                <center>Bienvenue sur Ô'gîtes <br> 
+                <br>
+                <?php echo $_SESSION["nom"]." ".$_SESSION["prenom"] ?>
+                </center>
                </h2>
+
+               
             </div>
             
         </div>
-			
-		</div>
+       
+        
 	</div>
 </main>
 

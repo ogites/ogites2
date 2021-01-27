@@ -43,8 +43,6 @@
 
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">
-        <h1>PAGE : MON COMPTE AVEC LES PARAMETRES</h1>
-        <br>
 		<div class="container">
         <div class="row">
             
@@ -127,7 +125,6 @@
             </div>
             
         </div>
-			
 		</div>
 	</div>
 </main>

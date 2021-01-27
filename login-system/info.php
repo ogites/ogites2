@@ -5,12 +5,8 @@
     header_page(0);
 ?>
 
-<script src="https://kit.fontawesome.com/a076d05399.js"> </script>
-
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">
-        <h1>PAGE : MON COMPTE AVEC LES PARAMETRES</h1>
-        <br>
 		<div class="container">
         <div class="row">
             
@@ -52,6 +48,7 @@
                         </tr>
                         <tr>
                             <td><a href="change_pass.php">Changer de mot de passe</a></td>
+                            
                         </tr>
                     
                     </tbody>
@@ -65,16 +62,16 @@
             <table class="table table-striped table-primary">
                 <thead>
                     <tr>
-                        <th><h3><center>Les informations sur vous : <?php echo ucfirst($_SESSION["pseudo"]); ?></center></h3></th>
+                        <th><h3><center>Les informations sur vous : <?php echo "@".$_SESSION["pseudo"]; ?></center></h3></th>
                     </tr>
                 </thead>
             </table>
         
-            <i class="fas fa-user"> Nom :</i><br> <?php echo ucfirst($_SESSION["nom"]); ?>
+            <i class="fa fa-user"> Nom :</i><br> <?php echo ucfirst($_SESSION["nom"]); ?>
             <br><br>
-            <i class="fas fa-user"> Prenom :</i><br> <?php echo ucfirst($_SESSION["prenom"]); ?>
+            <i class="fa fa-user"> Prenom :</i><br> <?php echo ucfirst($_SESSION["prenom"]); ?>
             <br><br>
-            <i class="fas fa-envelope"> Adresse mail :</i> <br><?php echo $_SESSION["email"]; ?>
+            <i class="fa fa-envelope"> Adresse mail :</i> <br><?php echo $_SESSION["email"]; ?>
             <br><br>
             
         
@@ -82,7 +79,7 @@
             </div>
             
         </div>
-			
+		
 		</div>
 	</div>
 </main>
