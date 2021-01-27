@@ -7,7 +7,7 @@
 
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">
-        <h1>PAGE : MON COMPTE AVEC LES PARAMETRES</h1>
+        <h1>MON COMPTE</h1>
         <br>
 		<div class="container">
         <div class="row">
@@ -58,7 +58,7 @@
            
             <div class="col-8">
                <h2>
-                <center>Bienvenue sur Ô'gîtes</cente>
+                <center>Bienvenue sur Ô'GÎTES</cente>
                </h2>
             </div>
             

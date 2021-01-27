@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 26 jan. 2021 à 02:57
+-- Généré le : mer. 27 jan. 2021 à 02:16
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -99,7 +99,9 @@ INSERT INTO `images_gites` (`id_images_gites`, `libelle`, `id_gites`, `link_url`
 (9, '', 3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/228437297.webp?k=155ab7f20dbf35748ecfaa5aef229e262efee974c0157ed4c7720b644585f33f&o='),
 (10, '', 6, 'https://www.gites-de-france.com/sites/default/files/styles/v2_width_1140/public/images/411977/411977-0_4041_65345d405383a247fb4f9d2b141f7977.jpg?itok=ZsHCseOC'),
 (11, '', 8, 'https://www.gitesdefrance-guadeloupe.com/photos/gites971/G/photo/2110.jpg'),
-(12, '', 9, 'https://cpmr.org/cpmr-islands/wp-content/uploads/sites/4/2019/07/test.png');
+(12, '', 9, 'https://cpmr.org/cpmr-islands/wp-content/uploads/sites/4/2019/07/test.png'),
+(13, '', 7, 'https://a0.muscache.com/im/pictures/1ddb10d3-c3b6-409a-b61b-0fa94d34ebbf.jpg?im_w=1440'),
+(14, '', 7, 'https://a0.muscache.com/im/pictures/221333e9-3559-4088-ac1b-591e0d2d6a16.jpg?im_w=1440');
 
 -- --------------------------------------------------------
 
@@ -196,7 +198,7 @@ ALTER TABLE `gites`
 -- AUTO_INCREMENT pour la table `images_gites`
 --
 ALTER TABLE `images_gites`
-  MODIFY `id_images_gites` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_images_gites` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`

@@ -63,7 +63,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="libelle">Nb. personnes Max</label>
-                        <input type="text" class="form-control" name="nb_personnes_max" required>
+                        <input type="number" class="form-control" name="nb_personnes_max" required>
                     </div>
                     <div class="form-group col-md-5">
                         <label for="libelle">Localisation</label>

@@ -22,36 +22,6 @@
 
         <div class="container">
 
-        <div class="row">
-	        <div class='col-sm-2' style='padding-left: none;'>
-	        	<form>
-		            <div class="form-group">
-		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control" name="date" />
-		                    <span class="input-group-addon">
-		                        <!--<i class="fa fa-calendar"></i>-->
-		                    </span>
-		                </div>
-		            </div>
-		        </form>
-	        </div>
-	    </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-	    <script >
-	    $(function () {
-	        $('#datepicker').datepicker({
-	            format: "dd/mm/yyyy",
-	            autoclose: true,
-	            todayHighlight: true,
-		        showOtherMonths: true,
-		        selectOtherMonths: true,
-		        autoclose: true,
-		        changeMonth: true,
-		        changeYear: true,
-		        orientation: "button"
-	        });
-	    });
-        </script>
             <?php
             // Récupérer la liste des réservations
             $SQLParam = "SELECT * FROM reservation";

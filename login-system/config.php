@@ -142,7 +142,7 @@
     	    				<a class="nav-link" href="/ogites2/login-system/param.php">Mon compte</a>
                 		</li>
                 		<li class="nav-item">
-    	    				<a class="nav-link" href="/ogites2/login-system/deconnexion.php">Déconnexion</a>
+    	    				<a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>
                 		</li>
                 		<?php
                 		}
@@ -150,7 +150,7 @@
                 		{
                 		?>
                 		<li class="nav-item">
-                		  	<a class="nav-link btn btn-success" href="/ogites2/login-system/connexion.php"><span style="color:white;">Connexion</span></a>
+                		  	<a class="nav-link btn btn-success" href="/ogites2/login-system/connexion.php"><i class="fa fa-sign-in" style="color:white;"></i> <span style="color:white;">Connexion</span></a>
                 		</li>
                 		<?php
                 		}

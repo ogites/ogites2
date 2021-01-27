@@ -36,10 +36,10 @@
                 <thead>
                     <tr class="bg-success">
                         <th class="white" style="width: 5%;">#</th>
-                        <th class="white">Libelle</th>
+                        <th class="white" style="width: 20%;">Libelle</th>
                         <th class="white">Description</th>
-                        <th class="white">Localisation</th>
-                        <th class="white">Gestion</th>
+                        <th class="white" style="width: 15%;">Localisation</th>
+                        <th class="white" style="width: 10%;">Gestion</th>
                     </tr>
                 </thead>
                 <tbody>
