@@ -129,7 +129,7 @@
                         if ($_SESSION['id_categorie'] == 1)
                         {
                         ?>  
-                            <li class="nav-item">
+                            <li class="nav-item" >
                                 <a class="nav-link" href="/ogites2/admin/index.php">Espace Admin</a>
                             </li>
                         <?php
@@ -160,6 +160,103 @@
       	    </nav>
     </header>
     <?php
+    }
+
+    /**
+    * Fonction de conversion de date du format am�ricain (AAAA-MM-JJ) ver le format fran�ais (JJ/MM/AAAA).
+    * @param string $date Date au format am�ricain (AAAA-MM-JJ)
+    * @return string Date au format fran�ais (JJ/MM/AAAA)
+    */
+    function dateFR($date)
+    {
+      $date = explode('-', $date);
+      $date = array_reverse($date);
+      $date = implode('/', $date);
+      return $date;
+    }
+
+    /**
+    * Fonction de conversion de date du format fran�ais (JJ/MM/AAAA) ver le format am�ricain (AAAA-MM-JJ).
+    * @param string $date Date au format fran�ais (JJ/MM/AAAA)
+    * @return string Date au format am�ricain (AAAA-MM-JJ)
+    */
+    function dateUS($date)
+    {
+      $date = explode('/', $date);
+      $date = array_reverse($date);
+      $date = implode('-', $date);
+    
+      return $date;
+    }
+
+    function get_date($date)
+     {
+        $TableJour = array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
+        $TableMois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre','Novembre', 'Décembre');
+		$tdate=array(0,0,0,0);
+		//v�rification de la date et formattage en fran�ais 
+		if (!empty($date))
+		{
+		//format français jj/mm/aaaa
+		if (substr($date, 8 , 2 )=="/")
+		{
+		$j= substr($date, 0 , 2 );
+		$m= substr($date, 3 , 2 );
+		$a= substr($date, 5 , 4 );
+		
+		}
+		if (substr($date, 8 , 2 )!="/")
+			{
+				//formattage en anglais aaaa-mm-jj
+			$j     = substr($date, 8 , 2 );
+			$m     = substr($date, 5 , 2 );
+			$a    = substr($date, 0 , 4 );
+				
+			}
+		
+		$i=$j;
+		if ($j=="1"){$j="1er";}
+		$var=$TableJour[date("w", mktime(0,0,0,$m,$i,$a))]." ".$j." ".$TableMois[$m-1]." ".$a;
+		
+		}
+		else
+		{
+		 	$j=date('j');
+			if ($j=="1"){$j="1er";}
+			$var=$TableJour[date('w')].' '.$j.' '.$TableMois[date('n')-1]." ".date('Y');
+		}
+	    $var=convert_html($var);
+        return ($var);
+    }
+
+        function convert_html($text)
+    {
+    	$special_chars=array("�");
+    
+    
+    	$special_chars = array( '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '�', '/', '&#039;',"'");
+    
+    	$normal_chars  = array( 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'E', 'E', 'E', 'E', 'e', 'e', 'e', 'e', 'I', 'I', 'I', 'I', 'i', 'i', 'i', 'i', 'O', 'O', 'O', 'O', 'O', 'O', 'o', 'o', 'o', 'o', 'o', 'o', 'U', 'U', 'U', 'U', 'u', 'u', 'u', 'u', 'B', 'C', 'c', 'D', 'd', 'N', 'n', 'P', 'p', 'Y', '-', '-',"-");
+    
+    		$text = stripslashes($text);
+    	$text = str_replace("�", "&eacute;", $text);
+    	$text = str_replace("é","e", $text);
+    	$text = str_replace("�", "&Eacute;", $text);
+    	$text = str_replace("�", "&egrave;", $text);
+    	$text = str_replace("�", "&agrave;", $text);
+    	$text = str_replace("�", "&ugrave;", $text);
+    	$text = str_replace("�", "&ecirc;", $text);
+    	$text = str_replace("�", "&acirc;", $text);
+    	$text = str_replace("�", "&ucirc;", $text);
+    	$text = str_replace("�", "&ocirc;", $text);
+    	$text = str_replace("�", "&icirc;", $text);
+    	$text = str_replace("�", "&euml;", $text);
+    	$text = str_replace("�", "&ccedil;", $text);
+    	$text = str_replace("�", "&rsquo;", $text);
+    	$text = str_replace("'", "&rsquo;", $text);
+    	$text = str_replace("�", "&euro;", $text);
+    	$text = str_replace("�", "&iuml;", $text);
+    	return $text;
     }
 ?>
 

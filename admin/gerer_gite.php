@@ -38,6 +38,7 @@
         <div style="clear: both;"></div>
 
         <div class="container">
+        <!-- TODO Supprimer un gîte et ses informations -->
             <div class="border-bottom">
                 <?php
                 // Si on clique sur le bouton modifier
@@ -91,7 +92,26 @@
                         </div>
                     </div>
                 </div>
+                
                 <br>
+
+                <center>
+                    <h5><a href="gerer_gite.php?id_gites=<?php echo $id_gites ?>&action=supp" class="btn btn-light"><strong style="color:#DC3545">Supprimer le gîte</strong></a></h5>
+                    <?php 
+                    if ((isset($_REQUEST["action"])) && ($action == "supp")) 
+                    {
+                    ?>
+                    <h5>Vous êtes sur le point de supprimer ce gîte.</h5>
+                    <a href="gerer_gite.php?id_gites=<?php echo $id_gites ?>" class="btn btn-secondary">Annuler</a>
+                    <a href="supp_gite.php?id_gites=<?php echo $id_gites ?>" class="btn btn-danger">Supprimer</a>
+                    
+                    <?php
+                    }
+                    ?>
+                </center>
+
+                <br>
+
                 <?php
                 // Si on clique sur le bouton ajouter
                 if ((isset($_REQUEST["action"])) && ($action == "add"))

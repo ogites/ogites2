@@ -14,7 +14,7 @@ function header_admin($onglet)
 ?>
     <header>
           <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-            <strong><a class="navbar-brand" href="index.php">Ô'GÎTES</a></strong>
+            <strong><a class="navbar-brand" href="/ogites2/index.php">Ô'GÎTES</a></strong>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                   aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@ function header_admin($onglet)
                         case 0:
                             ?>
                             <li class="nav-item">
-                                  <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
@@ -43,7 +43,7 @@ function header_admin($onglet)
                         case 1:
                             ?>
                             <li class="nav-item active">
-                                  <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
@@ -58,7 +58,7 @@ function header_admin($onglet)
                         case 2:
                             ?>
                             <li class="nav-item">
-                                  <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
@@ -73,7 +73,7 @@ function header_admin($onglet)
                         case 3:
                             ?>
                             <li class="nav-item">
-                                  <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
@@ -89,7 +89,10 @@ function header_admin($onglet)
                     {
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mon Compte</a>
+                        <a href="/ogites2/all_reservation.php" class="nav-link">Mes réservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ogites2/login-system/param.php">Mon Compte</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>

@@ -124,7 +124,7 @@
                                         <br>
                                         <!-- Lien vers le site d'origine du gîte -->
                                         <a target="_blank" href="<?php echo $Allresponse["link_url"] ?>" class="btn btn-warning" style="color: white;">Voir plus</a>
-                                        <a href="info_gites.php?id_gites=<?php echo $id_gites ?>" class="btn btn-success">Réserver</a>
+                                        <a href="info_gites2.php?id_gites=<?php echo $id_gites ?>" class="btn btn-success">Réserver</a>
                                     </div>
                                 </div>
                             </div>

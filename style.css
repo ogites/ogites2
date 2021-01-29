@@ -107,3 +107,7 @@ nav ul li:hover ul{
     font-weight: lighter;
     color : #0E0E10;
 }
+
+.white {
+    color: #fff;
+}
