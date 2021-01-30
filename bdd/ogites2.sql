@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 27 jan. 2021 à 03:26
+-- Généré le : sam. 30 jan. 2021 à 01:57
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -67,7 +67,6 @@ INSERT INTO `gites` (`id_gites`, `libelle`, `description`, `localisation`, `link
 (5, 'ALPINA', 'Gîte à Petit-Bourg', 'Petit-Bourg', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/alpinia-971g4411', 3),
 (6, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041', 2),
 (7, 'Bungalow à Grande Anse', 'Bungalow piscine privée à 900 m de Grande Anse', 'Deshaies', 'https://www.airbnb.fr/rooms/35685092?source_impression_id=p3_1611441404_Mw45FipKMopzq%2Bln&guests=1&adults=1', 10),
-(8, 'Gîte Kan-nida', 'Gîtes de Charme', 'Abymes', 'https://www.gitesdefrance-guadeloupe.com/location-vacances-Gite-a-Les-Abymes-Guadeloupe-971G2110.html', 2),
 (9, 'Test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test', 'https://www.lipsum.com/', 6);
 
 -- --------------------------------------------------------
@@ -98,7 +97,6 @@ INSERT INTO `images_gites` (`id_images_gites`, `libelle`, `id_gites`, `link_url`
 (8, '', 3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/228437239.webp?k=edea5e98764dfc5a109b5997335e20be5f567abac4cc9f68b570bcb03779466a&o='),
 (9, '', 3, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/228437297.webp?k=155ab7f20dbf35748ecfaa5aef229e262efee974c0157ed4c7720b644585f33f&o='),
 (10, '', 6, 'https://www.gites-de-france.com/sites/default/files/styles/v2_width_1140/public/images/411977/411977-0_4041_65345d405383a247fb4f9d2b141f7977.jpg?itok=ZsHCseOC'),
-(11, '', 8, 'https://www.gitesdefrance-guadeloupe.com/photos/gites971/G/photo/2110.jpg'),
 (12, '', 9, 'https://cpmr.org/cpmr-islands/wp-content/uploads/sites/4/2019/07/test.png'),
 (13, '', 7, 'https://a0.muscache.com/im/pictures/1ddb10d3-c3b6-409a-b61b-0fa94d34ebbf.jpg?im_w=1440'),
 (14, '', 7, 'https://a0.muscache.com/im/pictures/221333e9-3559-4088-ac1b-591e0d2d6a16.jpg?im_w=1440');
@@ -119,13 +117,6 @@ CREATE TABLE `reservation` (
   `id_gites` int(11) NOT NULL,
   `id_users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `reservation`
---
-
-INSERT INTO `reservation` (`id_reservation`, `libelle`, `date_debut`, `date_fin`, `nb_personnes`, `date_reserv`, `id_gites`, `id_users`) VALUES
-(2, 'Gîte Bois-Cannelle', '2021-01-26', '2021-01-28', 3, '2021-01-26', 3, 1);
 
 -- --------------------------------------------------------
 
