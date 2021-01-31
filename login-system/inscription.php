@@ -65,7 +65,8 @@ if(isset($_POST['submit']))
     }
 }
 ?>
-
+<title>S'inscrire - Ô'GÎTES</title>
+<link rel="icon" href="/ogites2/images/new-logo.png">
 <link rel="stylesheet" type="text/css" href="../style.css"/>
 <link rel="stylesheet" type="text/css" href="../scss/register.scss"/>
 <script src="https://kit.fontawesome.com/a076d05399.js"> </script>

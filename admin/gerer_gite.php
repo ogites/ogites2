@@ -2,6 +2,8 @@
     Page permettant de gérer un gîte
 -->
 <?php  
+    // Titre de la page
+    $title = "Gérer un gîte - Ô'GÎTES";
 	// Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';
@@ -121,7 +123,7 @@
                 <form action="add_image_gite.php?id_gites=<?php echo $id_gites ?>" method="POST">
                     <div class="form-group col-md-12">
                         <label for="link_image">Ajouter une image</label>
-                        <input type="text" name="link_image" class="form-control">
+                        <input type="text" name="link_image" class="form-control" required>
                         <br>
                         <center>
                             <a href="gerer_gite.php?id_gites=<?php echo $id_gites ?>" class="btn btn-secondary btn-lg">Annuler</a>

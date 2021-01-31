@@ -13,9 +13,34 @@
 <!-- Contenu de la page -->
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">
+        <?php
+        if(isset($_SESSION["id_users"]))
+        {
+        ?>
+        <h6 style="float:left;">Bienvenue sur Ô'GÎTES @<?php echo $_SESSION["pseudo"]; ?>.</h6>
+        <div style="clear: both;"></div>
+        <br>
+        <?php
+        }
+        ?>
 		<center>
 			<!-- Headline -->
-			<h2>Trouvez votre lieu favoris parmi une selection des meilleurs gîtes de Guadeloupe</h2>
+            
+            <?php
+            if(isset($_SESSION["id_users"]))
+            {
+            ?>
+            <h2>Trouvez votre lieu favoris parmi une selection des meilleurs gîtes de Guadeloupe.</h2>
+            <?php
+            }
+            else
+            {
+            ?>
+            <h2>Trouvez votre lieu favoris parmi une selection des meilleurs gîtes de Guadeloupe.</h2> <br>
+            <h3><strong>Inscrivez-vous pour réserver !</strong></h3>
+            <?php
+            }
+            ?>
 		</center>
 		<div class="container">
 			<br>

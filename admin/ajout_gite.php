@@ -2,6 +2,8 @@
     Page permettant d'ajouter des gîtes
 -->
 <?php  
+    // Titre de la page
+    $title = "Ajouter un gîte - Ô'GÎTES";
 	// Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';

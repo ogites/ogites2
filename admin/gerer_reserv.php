@@ -2,6 +2,8 @@
     Page permettant de gérer les réservations
 -->
 <?php  
+    // Titre de la page
+    $title = "Gérer les réservations - Ô'GÎTES";
 	// Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';

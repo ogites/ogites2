@@ -2,21 +2,23 @@
   Page de résultat du site
 -->
 <?php  
-  // Ajout du header
-  require_once 'head.php';
-  // Initialisation de la session
-  session_start(); 
-  // Navbar de la page de résultat
-  header_page(0);
+    // Titre de la page
+    $title = "Résultat(s) de recherche - Ô'GÎTES";
+    // Ajout du header
+    require_once 'head.php';
+    // Initialisation de la session
+    session_start(); 
+    // Navbar de la page de résultat
+    header_page(0);
 
-  if (isset($_POST["searchbar"]))
-  {
-      $ville = $_POST["searchbar"];
-  }
-  else
-  {
-      $ville = "";
-  }
+    if (isset($_POST["searchbar"]))
+    {
+        $ville = $_POST["searchbar"];
+    }
+    else
+    {
+        $ville = "";
+    }
 ?>
 
 <main role="main" class="flex-shrink-0">
@@ -65,13 +67,13 @@
             if ($ville == "")
             {
             ?>
-            <h2>Liste de tous les gîtes.</h2>
+            <h1><strong>LISTE DE TOUS LES GÎTES.</strong></h1>
             <?php
             }
             else
             {
             ?>
-            <h2>Résultat(s) pour <?php echo $ville ?>.</h2>
+            <h1><strong>RÉSULTAT(S) POUR <?php echo strtoupper($ville) ?>.</strong></h1>
             <?php
             }
             ?>
@@ -124,7 +126,15 @@
                                         <br>
                                         <!-- Lien vers le site d'origine du gîte -->
                                         <a target="_blank" href="<?php echo $Allresponse["link_url"] ?>" class="btn btn-warning" style="color: white;">Voir plus</a>
+                                        <?php 
+                                        // Possibilité de réserver uniquement si l'on est connecté
+                                        if(isset($_SESSION["id_users"]))
+                                        {
+                                        ?>
                                         <a href="info_gites2.php?id_gites=<?php echo $id_gites ?>" class="btn btn-success">Réserver</a>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

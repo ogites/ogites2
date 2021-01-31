@@ -2,6 +2,8 @@
     Page listant les réservations d'un utilisateur
 -->
 <?php  
+    // Titre de la page
+    $title = "Mes réservations - Ô'GÎTES";
     // Ajout du header
     require_once 'head.php';
     // Initialisation de la session

@@ -2,12 +2,14 @@
     Page de présentation du contexte du projet
 -->
 <?php  
-  // Ajout du header
-  require_once 'head.php';
-  // Initialisation de la session
-  session_start(); 
-  // Navbar de la page A propos
-  header_page(3);
+    // Titre de la page
+    $title = "À propos - Ô'GÎTES";
+    // Ajout du header
+    require_once 'head.php';
+    // Initialisation de la session
+    session_start(); 
+    // Navbar de la page A propos
+    header_page(3);
 ?>
 
 <!-- Contenu de la page -->

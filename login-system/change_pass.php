@@ -1,4 +1,6 @@
 <?php 
+    // Titre de la page
+    $title = "Modifier mon mot de passe - Ô'GÎTES";
     require_once '../head.php';
     session_start();
     require_once 'config.php';
@@ -47,7 +49,7 @@
         <div class="row">
             
             <div class="col-4">
-            <table class="table table-striped">
+            <table class="table">
                     <style>
                         td a:focus,
                         td a {
@@ -91,39 +93,39 @@
             </div>
            
             <div class="col-8">
-            <form method="post">
-                <table class="table table-striped table-warning">
-                    <thead>
-                        <tr>
-                            <th><h3><center>Modifier votre mot de passe</center></h3></th>
-                        </tr>
-                    </thead>
-                </table>
-               <br>
-            <center>  
-            <?php
-                if(isset($erreurMessage)){
-                    echo "<h6 style='color:red;'>".$erreurMessage."</h6>";
-                }
-
-                if(isset($messageReussi)){
-                    echo "<h6 style='color:green;'>".$messageReussi."</h6>";
-                }
-            ?>
-            </center>
-               Entrez votre <strong>ancien</strong> mot de passe : <br>
-               <input type="password" name="ancien_mdp" >
-               <br><br>
-               Entrez un <strong>nouveau</strong> mot de passe : <br>
-               <input type="password" name="new_mdp">
-               <br><br>
-               Confirmer le mot de passe : <br>
-               <input type="password" name="mdp_confirm">
-               <br><br>
-               <input type="submit" name="submit" value="Valider" class="btn btn-outline-success btn-sm">
-               </form>
+                <form method="post">
+                    <table class="table table-striped table-warning">
+                        <thead>
+                            <tr>
+                                <th><h3><center>Modifier votre mot de passe</center></h3></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br>
+                    <center>  
+                        <?php
+                            if(isset($erreurMessage)){
+                                echo "<h6 style='color:red;'>".$erreurMessage."</h6>";
+                            }
+                        
+                            if(isset($messageReussi)){
+                                echo "<h6 style='color:green;'>".$messageReussi."</h6>";
+                            }
+                        ?>
+                    </center>
+                    Entrez votre <strong>ancien</strong> mot de passe : <br>
+                    <input type="password" name="ancien_mdp" class="form-control" >
+                    <br><br>
+                    Entrez un <strong>nouveau</strong> mot de passe : <br>
+                    <input type="password" name="new_mdp" class="form-control">
+                    <br><br>
+                    Confirmer le mot de passe : <br>
+                    <input type="password" name="mdp_confirm" class="form-control">
+                    <br><br>
+                    <center>
+                    <input type="submit" name="submit" value="Valider" class="btn btn-outline-success">
+                </form>
             </div>
-            
         </div>
 		</div>
 	</div>

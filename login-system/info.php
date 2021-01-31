@@ -1,4 +1,6 @@
 <?php 
+    // Titre de la page
+    $title = "Mes informations - Ô'GÎTES";
     require_once '../head.php';
     session_start();
     require_once 'config.php';
@@ -62,18 +64,18 @@
             <table class="table table-striped table-primary">
                 <thead>
                     <tr>
-                        <th><h3><center>Les informations sur vous : <?php echo "@".$_SESSION["pseudo"]; ?></center></h3></th>
+                        <th><h3><center>Les informations sur vous : <strong><?php echo "@".$_SESSION["pseudo"]; ?></strong></center></h3></th>
                     </tr>
                 </thead>
             </table>
-        
-            <i class="fa fa-user"> Nom :</i><br> <?php echo ucfirst($_SESSION["nom"]); ?>
+            <h5>
+            <i class="fa fa-user"></i> <strong>Nom :</strong><br> <?php echo ucfirst($_SESSION["nom"]); ?>
             <br><br>
-            <i class="fa fa-user"> Prenom :</i><br> <?php echo ucfirst($_SESSION["prenom"]); ?>
+            <i class="fa fa-user"></i> <strong>Prenom :</strong><br> <?php echo ucfirst($_SESSION["prenom"]); ?>
             <br><br>
-            <i class="fa fa-envelope"> Adresse mail :</i> <br><?php echo $_SESSION["email"]; ?>
+            <i class="fa fa-envelope"></i> <strong>Adresse mail :</strong> <br><?php echo $_SESSION["email"]; ?>
             <br><br>
-            
+            </h5>
         
             <?php } ?>
             </div>

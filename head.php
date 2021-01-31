@@ -10,8 +10,24 @@ $root = $_SERVER["DOCUMENT_ROOT"] . '/ogites2/';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <?php
+    // Définition du titre de la page
+    global $title;
+    if($title == "")
+    {
+    ?>
     <title>Ô'GÎTES</title>
-
+    <?php
+    }
+    else
+    {
+    ?>
+    <title><?php echo $title; ?></title>
+    <?php
+    }
+    ?>
+    <!-- Icone de l'équipe -->
+    <link rel="icon" href="/ogites2/images/new-logo.png">
      <!-- Bootstrap core CSS -->
     <link href="/ogites2/assets/bootstrap-4.2.1-dist/css/bootstrap.min.css" rel="stylesheet">
 

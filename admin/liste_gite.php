@@ -2,6 +2,8 @@
     Page avec la liste des gîtes
 -->
 <?php  
+    // Titre de la page
+    $title = "Liste des gîtes - Ô'GÎTES";
 	// Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';

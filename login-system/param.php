@@ -1,4 +1,6 @@
 <?php 
+    // Titre de la page
+    $title = "Paramètres - Ô'GÎTES";
     require_once '../head.php';
     session_start();
     require_once 'config.php';
@@ -56,12 +58,12 @@
             </div>
            
             <div class="col-8">
-               <h2>
-                <center>Bienvenue sur Ô'gîtes <br> 
+               <h1>
+                <center>Bienvenue sur <strong>Ô'GÎTES</strong> <br> 
                 <br>
-                <?php echo $_SESSION["nom"]." ".$_SESSION["prenom"] ?>
+                <?php echo strtoupper($_SESSION["nom"])." ".$_SESSION["prenom"] ?>
                 </center>
-               </h2>
+               </h1>
 
                
             </div>

@@ -4,7 +4,7 @@
 */
 //  Connexion à la base de données
     require_once 'config.php';
-
+    
     if(isset($_POST['submit'])){
 
         $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -62,7 +62,8 @@
 
     }
 ?>
-
+<title>Se connecter - Ô'GÎTES</title>
+<link rel="icon" href="/ogites2/images/new-logo.png">
 <link rel="stylesheet" type="text/css" href="../style.css"/>
 <link rel="stylesheet" type="text/css" href="../scss/connect.scss"/>
 <link rel="stylesheet" type="text/css" href="../scss/profil.scss"/>

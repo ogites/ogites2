@@ -1,4 +1,6 @@
 <?php  
+    // Titre de la page
+    $title = "Réserver un gîte - Ô'GÎTES";
     // Ajout du header
     require_once 'head.php';
     // Initialisation de la session
@@ -88,9 +90,18 @@
                             <?php 
                             for($i = 1; $i <= $nb_personne_max; $i++)
                             {
+                                if($i == 1)
+                                {
+                                ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?> personne</option>
+                                <?php    
+                                }
+                                else
+                                {
                             ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?> personnes</option>
                             <?php 
+                                }
                             } 
                             ?>
                         </select>

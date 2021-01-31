@@ -2,6 +2,8 @@
     Page permettant de gérer les utilisateurs
 -->
 <?php  
+    // Titre de la page
+    $title = "Gérer les utilisateurs - Ô'GÎTES";
 	// Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';
@@ -53,7 +55,7 @@
                         <td><?php echo $info_users["pseudo"] ?></td>
                         <td><?php echo $info_users["nom"] . " " . $info_users["prenom"]; ?></td>
                         <td><?php echo $info_users["email"] ?></td>
-                        <td><?php echo $info_users["date_inscription"] ?></td>
+                        <td><?php echo datefr($info_users["date_inscription"]) ?></td>
                         <?php
                         if ($info_users["id_categorie"] == 1)
                         {

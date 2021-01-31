@@ -14,8 +14,25 @@ $root = $_SERVER["DOCUMENT_ROOT"] . '/ogites2/';
     <link rel="stylesheet" href="admin_style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css">
 
+    <?php
+    // Définition du titre de la page
+    global $title;
+    if($title == "")
+    {
+    ?>
     <title>Ô'GÎTES</title>
+    <?php
+    }
+    else
+    {
+    ?>
+    <title><?php echo $title; ?></title>
+    <?php
+    }
+    ?>
 
+    <!-- Icone de l'équipe -->
+    <link rel="icon" href="../images/new-logo.png">
      <!-- Bootstrap core CSS -->
     <link href="../assets/bootstrap-4.2.1-dist/css/bootstrap.min.css" rel="stylesheet">
 

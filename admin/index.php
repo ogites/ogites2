@@ -5,6 +5,8 @@
     ainsi que la gestion des utilisateurs et des réservations
 -->
 <?php  
+    // Titre de la page
+    $title = "Espace administrateur - Ô'GÎTES";
 	// Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';
