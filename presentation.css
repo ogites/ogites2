@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 60px;
+}
+
+img {
+    box-shadow: 10px 5px 5px grey;
+}
+
+.section {
+    text-decoration: underline;
+    text-decoration-color: #27AE60;
+    text-decoration-style: solid;
+    margin: 30px
+}
+
+.lieux {
+    background-color: #F4F6F7
+}
+
+.nom-lieux {
+    margin: 15px
+}
+
+.texte-lieu {
+    text-align: justify;
+    margin: 15px
+}
+
+.plage {
+    background-color: #EAF2F8;
+    text-align: justify;
+}
+
+.nom-plage {
+    margin: 0;
+    padding: 60px;
+    text-align: center;
+    color: #ffff;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.plage-body {
+    margin: 20px
+}
+
+.soufriere {
+    text-align: justify;
+}
+
+.nom-soufriere {
+    margin: 0;
+    padding: 60px;
+    text-align: center;
+    color: #ffff;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+
+.soufriere-body {
+    margin: 20px
+}
