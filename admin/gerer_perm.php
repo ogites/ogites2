@@ -47,11 +47,12 @@
                 </thead>
                 <tbody>
                     <?php
+                    $xc = 1;
                     while ($info_users = $Myresult->fetch())
                     {
                     ?>
                     <tr>
-                        <td><?php echo $info_users["id_users"] ?></td>
+                        <td><?php echo $xc; ?></td>
                         <td><?php echo $info_users["pseudo"] ?></td>
                         <td><?php echo $info_users["nom"] . " " . $info_users["prenom"]; ?></td>
                         <td><?php echo $info_users["email"] ?></td>
@@ -66,12 +67,13 @@
                         else
                         {
                         ?>
-                        <td><a href="set_admin.php?id_users=<?php echo $info_users['id_users'] ?>" class="btn btn-danger">Définir comme admin</a></td>
+                        <td><a href="set_admin.php?id_users=<?php echo $info_users['id_users'] ?>" class="btn btn-danger">Définir comme administrateur</a></td>
                         <?php
                         }
                         ?>
                     </tr>
                     <?php
+                        $xc++;
                     }
                     ?>
                 </tbody>

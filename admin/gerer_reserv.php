@@ -42,16 +42,17 @@
                         <th class="white">Libelle</th>
                         <th class="white">Date de début</th>
                         <th class="white">Date de fin</th>
-                        <th class="white">Clients</th>
+                        <th class="white">Client</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
+                    $xc = 1;
                     while ($info_reserv = $Myresult->fetch())
                     {
                     ?>
                     <tr>
-                        <td><?php echo $info_reserv["id_reservation"] ?></td>
+                        <td><?php echo $xc; ?></td>
                         <?php
                         // Récupération du libelle du gîte réservé
                         $id_gites = $info_reserv["id_gites"];
@@ -62,8 +63,8 @@
                         $libelle_gite = $info_gites["libelle"];
                         ?>
                         <td><?php echo $libelle_gite ?></td>
-                        <td><?php echo $info_reserv["date_debut"] ?></td>
-                        <td><?php echo $info_reserv["date_fin"] ?></td>
+                        <td><?php echo datefr($info_reserv["date_debut"]) ?></td>
+                        <td><?php echo datefr($info_reserv["date_fin"]) ?></td>
                         <?php
                         // Récupération du nom et prénom du client qui a réservé
                         $id_users = $info_reserv["id_users"];
@@ -76,6 +77,7 @@
                         <td><?php echo $nom_prenom_user ?></td>
                     </tr>
                     <?php
+                        $xc++;
                     }
                     ?>
                 </tbody>

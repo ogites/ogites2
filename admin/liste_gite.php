@@ -46,17 +46,19 @@
                 </thead>
                 <tbody>
                     <?php
+                    $xc = 1;
                     while ($info_gites = $Myresult->fetch())
                     {
                     ?>
                     <tr>
-                        <td><?php echo $info_gites["id_gites"]; ?></td>
+                        <td><?php echo $xc; ?></td>
                         <td><a href="<?php echo $info_gites["link_url"]; ?>" class="black"><?php echo $info_gites["libelle"]; ?></a></td>
                         <td><?php echo $info_gites["description"]; ?></td>
                         <td><?php echo $info_gites["localisation"]; ?></td>
                         <td><a href="gerer_gite.php?id_gites=<?php echo $info_gites['id_gites']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit white"></i><strong> <span class="white">Gérer</span></strong></a></td>
                     </tr>
                     <?php
+                        $xc++;
                     }
                     ?>
                 </tbody>
