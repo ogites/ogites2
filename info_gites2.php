@@ -69,7 +69,7 @@
                             <!-- Date de début -->
                             <label for="date_debut" class="col-sm-5 col-form-label">Date d'arrivée</label>
                             <div class="col-sm-7">
-                                <input type="date" class="form-control" name="date_debut">
+                                <input type="date" class="form-control" name="date_debut" min="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
                         <br>
@@ -77,7 +77,7 @@
                             <!-- Date de fin -->
                             <label for="date_fin" class="col-sm-5 col-form-label">Date de départ</label>
                             <div class="col-sm-7">      
-                                <input type="date" class="form-control" name="date_fin">
+                                <input type="date" class="form-control" name="date_fin" >
                             </div>
                         </div>
                         <br>

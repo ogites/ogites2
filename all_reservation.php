@@ -119,7 +119,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-4 col-form-label">Date d'arrivée :</label>
                                                                 <div class="col-5">
-                                                                    <input type="date" class="form-control" name="date_debut_reserv" required>
+                                                                    <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" name="date_debut_reserv" required>
                                                                 </div>
                                                                 <br><br>
                                                                 <label class="col-4 col-form-label">Date de départ :</label>
