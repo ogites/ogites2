@@ -14,7 +14,9 @@
     session_start(); 
     header_admin(1);
 ?>
-
+<script>
+    console.log("Démarrage Espace Admin - O'GITES");
+</script>
 <!-- Contenu de la page -->
 <main role="main" class="flex-shrink-0">
 	<div class="container-fluid" id="index">

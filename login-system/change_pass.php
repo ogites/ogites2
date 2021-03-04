@@ -11,13 +11,13 @@
         $ancien_mdp = password_hash($_POST['ancien_mdp'], PASSWORD_DEFAULT);
         $new_mdp = password_hash($_POST['new_mdp'], PASSWORD_DEFAULT);
         $mdp_confirm = password_hash($_POST['mdp_confirm'], PASSWORD_DEFAULT);
-        
+        // Si les champs ne sont pas vide
         if((!empty($_POST['ancien_mdp'])) && (!empty($_POST['new_mdp'])) && (!empty($_POST['mdp_confirm']))){
-
+            // Si l'ancien mot de passe est différent du nouveau
             if($_POST['new_mdp'] != $_POST['ancien_mdp']){
-
+                // Si le nouveau mot de passe est pareil que la confirmation
                 if($_POST['new_mdp'] == $_POST['mdp_confirm']) {
-        
+                    // Changement dans la base de données
                     $bdd = bd_connect();
                     $req = $bdd->prepare("UPDATE users SET mdp = ? WHERE pseudo = ?");
                     $req->execute([
@@ -26,16 +26,19 @@
                     ]);
                     $messageReussi = "Le mot de passe a bien été modifié !";
                         
-        
+                        
                 } else {
+                    // Message d'erreur
                     $erreurMessage = "Les mots de passes ne sont pas identiques !";
                 }
         
             } else {
+                // Message d'erreur
                 $erreurMessage = "Le mot de passe doivent être différents...";
             }
 
         } else {
+            // Message d'erreur
             $erreurMessage = "Veuillez remplir tous les champs";
         }
     

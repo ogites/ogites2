@@ -126,7 +126,7 @@
             <h5>Vous n'avez pas de compte ? </h5> <i class="fas fa-chevron-circle-right"></i> 
         </div>
         <div class="tab-footer1">
-            <a class="tab-link" href="inscription.php">Clique ici</a>
+            <a class="tab-link" href="inscription.php">Cliquez ici</a>
         </div>
     </div>
 </body>

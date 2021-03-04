@@ -207,9 +207,12 @@
                 <h3 style="float: right;">Nb. personnes Max :&nbsp; <strong><?php echo $info_gite["nb_personnes_max"] ?></strong></h3>
                 <!-- Nettoyage du flottement -->
                 <div style="clear: both;"></div>
-                <!-- Description du gîte -->
                 <br>
-                <h3>Description :&nbsp; <strong><?php echo $info_gite["description"] ?></strong></h3>
+                <!-- Description du gîte -->
+                <h3 style="float: left;">Description :&nbsp; <strong><?php echo $info_gite["description"] ?></strong></h3>
+                <br>
+                <!-- Nombre de réservations actives du gîte -->
+                
                 <?php
                 }
                 ?>

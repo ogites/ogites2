@@ -36,7 +36,7 @@
         </ul>
         <h4><strong>La sous-traitance :</strong></h4>
         <ul>
-            <li><h4>JEAN-POMBO Jennyfer</h4></li>
+            <li><h4>JEAN-POMBO Jennifer</h4></li>
             <li><h4>NAQUIN Kristie</h4></li>
             <li><h4>DUHAMEL Jorane</h4></li>
         </ul>

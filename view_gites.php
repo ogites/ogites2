@@ -127,6 +127,12 @@
                                         <!-- Lien vers le site d'origine du gîte -->
                                         <a target="_blank" href="<?php echo $Allresponse["link_url"] ?>" class="btn btn-warning" style="color: white;">Voir plus</a>
                                         <?php 
+                                        // Savoir si le gîte est disponible
+                                        $SQLParam3 = "SELECT * FROM reservation WHERE id_gites = $id_gites";
+                                        $Myresult3 = $pdo->query($SQLParam3);
+                                        $Myresult3->setFetchMode(PDO::FETCH_ASSOC);
+                                        $info_reserv = $Myresult3->fetch();
+
                                         // Possibilité de réserver uniquement si l'on est connecté
                                         if(isset($_SESSION["id_users"]))
                                         {
