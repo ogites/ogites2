@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 11 mars 2021 à 16:00
+-- Généré le : jeu. 11 mars 2021 à 16:46
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -49,6 +49,7 @@ INSERT INTO `categorie` (`id_categorie`, `libelle`) VALUES
 
 CREATE TABLE `gites` (
   `id_gites` int(11) NOT NULL,
+  `createur` int(11) NOT NULL,
   `libelle` text NOT NULL,
   `description` text NOT NULL,
   `localisation` text NOT NULL,
@@ -61,15 +62,15 @@ CREATE TABLE `gites` (
 -- Déchargement des données de la table `gites`
 --
 
-INSERT INTO `gites` (`id_gites`, `libelle`, `description`, `localisation`, `link_url`, `nb_personnes_max`, `prix_nuit`) VALUES
-(1, 'Villa Bagatelle', 'Gîte à Sainte-Rose', 'Sainte-Rose', 'https://www.gites.fr/gites_villa-bagatelle_sainte-rose_46386.htm', 3, 0),
-(2, 'La Koumbala', 'Gîtes à Bouillante', 'Bouillante', 'https://www.gites.fr/gites_la-koumbala_bouillante_58031.htm', 2, 0),
-(3, 'Gîte Bois-Cannelle', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/gite-bois-cannelle.fr.html', 4, 0),
-(4, 'Carre Royal', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/carre-royal.fr.html?label=gen173nr-1FCAMYgwQoWkIIZGVzaGFpZXNIDVgEaFqIAQGYAQ24ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApCAhv4FwAIB0gIkNTE2NTEzYTEtOWZkOC00NzIwLWFiMGUtN2NhYThiNTk1MzYz2AIF4AIB;sid=ac06ad128edb29b74d8164fe58ead413', 7, 0),
-(5, 'ALPINA', 'Gîte à Petit-Bourg', 'Petit-Bourg', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/alpinia-971g4411', 3, 0),
-(6, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041', 2, 0),
-(7, 'Bungalow à Grande Anse', 'Bungalow piscine privée à 900 m de Grande Anse', 'Deshaies', 'https://www.airbnb.fr/rooms/35685092?source_impression_id=p3_1611441404_Mw45FipKMopzq%2Bln&guests=1&adults=1', 10, 0),
-(11, 'Studio vue sur mer', 'Studio vue mer, accès direct plage', 'Gosier', 'https://www.cybevasion.fr/gites-studio-vue-mer-les-pieds-dans-l-eau-acces-direct-plage-le-gosier-e59559.html', 4, 0);
+INSERT INTO `gites` (`id_gites`, `createur`, `libelle`, `description`, `localisation`, `link_url`, `nb_personnes_max`, `prix_nuit`) VALUES
+(1, 0, 'Villa Bagatelle', 'Gîte à Sainte-Rose', 'Sainte-Rose', 'https://www.gites.fr/gites_villa-bagatelle_sainte-rose_46386.htm', 3, 0),
+(2, 0, 'La Koumbala', 'Gîtes à Bouillante', 'Bouillante', 'https://www.gites.fr/gites_la-koumbala_bouillante_58031.htm', 2, 0),
+(3, 0, 'Gîte Bois-Cannelle', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/gite-bois-cannelle.fr.html', 4, 0),
+(4, 0, 'Carre Royal', 'Gîte à Deshaies', 'Deshaies', 'https://www.booking.com/hotel/gp/carre-royal.fr.html?label=gen173nr-1FCAMYgwQoWkIIZGVzaGFpZXNIDVgEaFqIAQGYAQ24ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApCAhv4FwAIB0gIkNTE2NTEzYTEtOWZkOC00NzIwLWFiMGUtN2NhYThiNTk1MzYz2AIF4AIB;sid=ac06ad128edb29b74d8164fe58ead413', 7, 0),
+(5, 0, 'ALPINA', 'Gîte à Petit-Bourg', 'Petit-Bourg', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/alpinia-971g4411', 3, 0),
+(6, 0, 'La Roseraie', 'Gîte au Lamentin', 'Lamentin', 'https://www.gites-de-france.com/fr/guadeloupe/guadeloupe/la-roseraie-971g4041', 2, 0),
+(7, 0, 'Bungalow à Grande Anse', 'Bungalow piscine privée à 900 m de Grande Anse', 'Deshaies', 'https://www.airbnb.fr/rooms/35685092?source_impression_id=p3_1611441404_Mw45FipKMopzq%2Bln&guests=1&adults=1', 10, 0),
+(11, 0, 'Studio vue sur mer', 'Studio vue mer, accès direct plage', 'Gosier', 'https://www.cybevasion.fr/gites-studio-vue-mer-les-pieds-dans-l-eau-acces-direct-plage-le-gosier-e59559.html', 4, 0);
 
 -- --------------------------------------------------------
 
