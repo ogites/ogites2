@@ -43,7 +43,7 @@
                     <tr class="bg-primary">
                         <th class="white" style="width: 5%;">#</th>
                         <th class="white" style="width: 30%;">Clients</th>
-                        <th class="white">Messages</th>
+                        <th class="white">Dernier message</th>
                         <th class="white" style="width: 15%; text-align: center">Voir</th>
                     </tr>
                 </thead>
@@ -65,7 +65,7 @@
                         $nom_prenom = $info_client["nom"] . " " . $info_client["prenom"];
                         ?>
                         <td><?php echo $nom_prenom; ?></td>
-                        <td><?php echo $info_messages["contenu"];?></td>
+                        <td><?php echo reduceText($info_messages["contenu"], 60);?></td>
                         <td><a href="" class="btn btn-warning"> <strong><i class="fa fa-comment white"></i> <span class="white">Voir tout</span></strong></td>
                     </tr>
                     <?php

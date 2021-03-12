@@ -259,9 +259,14 @@
     	return $text;
     }
     
-    function reduceText($text)
+    /**
+     * Fonction permettant de réduire la taille d'un texte
+     * en fonction de la taille entrée en paramètre
+     */
+    function reduceText($texte, $taille)
     {
-        return $text;
+        $texteCoupé = (strlen($texte) > $taille) ? substr($texte, 0, $taille) . "..." : $texte;
+        return $texteCoupé;
     }
 ?>
 
