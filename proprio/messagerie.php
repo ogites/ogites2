@@ -29,7 +29,7 @@
         <div class="container">
             <?php
             // Récupérer la liste des messages
-            $SQLParam = "SELECT * FROM messages WHERE destinataire = $id_users";
+            $SQLParam = "SELECT DISTINCT expediteur FROM messages";
             $Myresult = $pdo->query($SQLParam);
             $Myresult->setFetchMode(PDO::FETCH_ASSOC);
             $nb_messages = $Myresult->rowCount();
@@ -42,7 +42,7 @@
                 <thead>
                     <tr class="bg-primary">
                         <th class="white" style="width: 5%;">#</th>
-                        <th class="white" style="width: 30%;">Clients</th>
+                        <th class="white" style="width: 30%;">Expéditeur</th>
                         <th class="white">Dernier message</th>
                         <th class="white" style="width: 15%; text-align: center">Voir</th>
                     </tr>
@@ -65,8 +65,16 @@
                         $nom_prenom = $info_client["nom"] . " " . $info_client["prenom"];
                         ?>
                         <td><?php echo $nom_prenom; ?></td>
-                        <td><?php echo reduceText($info_messages["contenu"], 60);?></td>
-                        <td><a href="" class="btn btn-warning"> <strong><i class="fa fa-comment white"></i> <span class="white">Voir tout</span></strong></td>
+                        <?php
+                        // Récupération du dernier message
+                        $SQLParam3 = "SELECT contenu, id_message FROM messages " 
+                        . "ORDER BY id_message DESC LIMIT 1";
+                        $Myresult3 = $pdo->query($SQLParam3);
+                        $Myresult3->setFetchMode(PDO::FETCH_ASSOC);
+                        $dernier_message = $Myresult3->fetch();
+                        ?>
+                        <td><?php echo reduceText($dernier_message["contenu"], 60);?></td>
+                        <td><a href="convers.php" class="btn btn-warning"> <strong><i class="fa fa-comment white"></i> <span class="white">Voir tout</span></strong></td>
                     </tr>
                     <?php
                         $xc++;
