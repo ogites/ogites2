@@ -258,22 +258,10 @@
     	$text = str_replace("�", "&iuml;", $text);
     	return $text;
     }
-    /*
-    function verif($type, $aVerif)
+    
+    function reduceText($text)
     {
-        switch($type)
-        {
-            case pseudo :
-                // requete
-                break;
-
-            case email :
-                //requete
-                break;
-
-        }
+        return $text;
     }
-
-    verif("pseudo", $pseudo);*/
 ?>
 
