@@ -74,7 +74,7 @@
                         $dernier_message = $Myresult3->fetch();
                         ?>
                         <td><?php echo reduceText($dernier_message["contenu"], 60);?></td>
-                        <td><a href="convers.php" class="btn btn-warning"> <strong><i class="fa fa-comment white"></i> <span class="white">Voir tout</span></strong></td>
+                        <td><a href="convers.php?expediteur=<?php echo $id_client ?>&destinataire=<?php echo $id_users ?>" class="btn btn-warning"> <strong><i class="fa fa-comment white"></i> <span class="white">Voir tout</span></strong></td>
                     </tr>
                     <?php
                         $xc++;

@@ -265,8 +265,8 @@
      */
     function reduceText($texte, $taille)
     {
-        $texteCoupé = (strlen($texte) > $taille) ? substr($texte, 0, $taille) . "..." : $texte;
-        return $texteCoupé;
+        return (strlen($texte) > $taille) ? substr($texte, 0, $taille) . "..." : $texte;
+        
     }
 ?>
 
