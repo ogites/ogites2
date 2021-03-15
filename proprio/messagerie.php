@@ -17,7 +17,7 @@
     //echo $id_users;
 ?>
 <!-- Contenu de la page -->
-<main role="main" class="flex-shrinl-0">
+<main role="main" class="flex-shrink-0">
     <div class="container-fluid" id="index">
         <!-- Titre de la page -->
         <h1 style="float: left;"><strong>MESSAGERIE</strong></h1>
