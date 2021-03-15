@@ -268,5 +268,21 @@
         return (strlen($texte) > $taille) ? substr($texte, 0, $taille) . "..." : $texte;
         
     }
+
+    /**
+     * Fonction permettant d'envoyer un message à un autre utilisateur
+     */
+    function sendMessage($expediteur, $destinataire, $contenu)
+    {
+        global $pdo;
+
+        // Requete d'insertion dans la table message
+        $SQLParam = "INSERT INTO messages (expediteur, destinataire, contenu)"
+        . " VALUES ($expediteur, $destinataire, '$contenu')";
+        // Exécution de la requête
+        $Myresult = $pdo->exec($SQLParam);
+
+        return 1;
+    }
 ?>
 

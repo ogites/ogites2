@@ -29,16 +29,62 @@
         <div style="clear: both;"></div>
 
         <div class="container">
+            <!-- Style du tableau -->
+            <style>
+                table {
+                    width: 100%;
+                }
+
+                thead, tbody, tr, td, th { display: block; }
+
+                tr:after {
+                    content: ' ';
+                    display: block;
+                    visibility: hidden;
+                    clear: both;
+                }
+
+                thead th {
+                    height: auto;
+
+                    /*text-align: left;*/
+                }
+
+                tbody {
+                    height: 600px;
+                    overflow-y: auto;
+                }
+
+                thead {
+                    /* fallback */
+                }
+
+                #newMessage {
+                    width: 87%;
+                }
+
+                .left {
+                    float: left;
+                }
+
+                .right {
+                    float: right;
+                }
+
+                .white {
+                    color: #fff;
+                }
+            </style>
             <?php
             // Récupérer tous les messages
-            $SQLParam = "SELECT * FROM messages "
-            . " WHERE (expediteur = $expediteur AND destinataire = $destinataire) OR (expediteur= $destinataire AND destinataire = $expediteur)";
+            $SQLParam = "SELECT * FROM messages WHERE (expediteur = $expediteur AND destinataire = $destinataire)"
+            . " OR (expediteur= $destinataire AND destinataire = $expediteur) ORDER BY id_message DESC";
             //echo $SQLParam; 
             $Myresult = $pdo->query($SQLParam);
             $Myresult->setFetchMode(PDO::FETCH_ASSOC);
             ?>
             <!-- Tableau des messages -->
-            <table class="table table-hover" style="width: 100%;">
+            <table class="table table-hover">
                 <thead>
                     <tr class="bg-primary">
                         <th class="white">Liste des messages</th>
@@ -58,14 +104,22 @@
                             ?>
                             <div style="float: left; width:100%">
                                 <?php
+                                // Définition du nom de l'expéditeur
                                 $SQLParam2 = "SELECT * FROM users WHERE id_users = $expediteur";
                                 $Myresult2 = $pdo->query($SQLParam2);
                                 $Myresult2->setFetchMode(PDO::FETCH_ASSOC);
                                 $info_expediteur = $Myresult2->fetch();
                                 ?>
-                                <h2><?php echo $info_expediteur["nom"] . " " . $info_expediteur["prenom"] ?></h2>
-                                <h3><?php echo $messages["contenu"] ?></h3>
-                                <p><?php echo $messages["date_heure"] ?></p>
+                                <h5><strong><?php echo $info_expediteur["nom"] . " " . $info_expediteur["prenom"] ?></strong></h5>
+                                <p><?php echo $messages["contenu"] ?></p>
+                                <?php 
+                                // Définition de la date d'envoi
+                                $date_heure = explode(" ", $messages["date_heure"]);
+                                $date_envoi = datefr($date_heure[0]);  
+                                // Définition de l'heure d'envoi
+                                $heure_envoi = substr($date_heure[1], 0, -3);
+                                ?>
+                                <p><small><?php echo $date_envoi . " " . $heure_envoi ?></small></p>
                             </div>
                             <?php
                             }
@@ -73,15 +127,14 @@
                             {
                             ?>
                             <div style="float: right" ; width:100%>
-                                <?php
-                                $SQLParam3 = "SELECT * FROM users WHERE id_users = $destinataire";
-                                $Myresult3 = $pdo->query($SQLParam3);
-                                $Myresult3->setFetchMode(PDO::FETCH_ASSOC);
-                                $info_destinataire = $Myresult3->fetch();
+                                <h5><strong>Vous</strong></h5>
+                                <p><?php echo $messages["contenu"] ?></p>
+                                <?php 
+                                // Définition de la date et de l'heure d'envoi du message
+                                $date_heure = explode(" ", $messages["date_heure"]);
+                                $date_envoi = datefr($date_heure[0]);  
                                 ?>
-                                <h2><?php echo $info_destinataire["nom"] . " " . $info_destinataire["prenom"]?></h2>
-                                <h3><?php echo $messages["contenu"] ?></h3>
-                                <p><?php echo $messages["date_heure"] ?></p>
+                                <p><small><?php echo $date_envoi ?></small></p>
                             </div>
                             <?php 
                             }
@@ -93,6 +146,15 @@
                     ?>
                 </tbody>
             </table>
+            <!-- Envoie d'un nouveau message -->
+            <div style="margin: 30px">
+                <form action="send_message.php?expediteur=<?php echo $destinataire ?>&destinataire=<?php echo $expediteur ?>" method="POST">
+                    <button type="submit" class="btn btn-success right" style="width: auto;">
+                        <strong class="white">Envoyer</strong> <i class="fa fa-paper-plane white"></i>
+                    </button>
+                    <input type="text" name="newMessage" id="newMessage" class="form-control" placeholder="Entrez votre message.">
+                </form>
+            </div>
         </div>
     </div>
 </main>

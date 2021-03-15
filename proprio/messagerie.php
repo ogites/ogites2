@@ -29,7 +29,7 @@
         <div class="container">
             <?php
             // Récupérer la liste des messages
-            $SQLParam = "SELECT DISTINCT expediteur FROM messages";
+            $SQLParam = "SELECT DISTINCT expediteur FROM messages WHERE expediteur != $id_users";
             $Myresult = $pdo->query($SQLParam);
             $Myresult->setFetchMode(PDO::FETCH_ASSOC);
             $nb_messages = $Myresult->rowCount();
