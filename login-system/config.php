@@ -281,8 +281,100 @@
         . " VALUES ($expediteur, $destinataire, '$contenu')";
         // Exécution de la requête
         $Myresult = $pdo->exec($SQLParam);
+    }
 
-        return 1;
+    /**
+     * Fonction qui retourne le nombre de gîtes créé par un utilisateur
+     */
+    function nbGitesCreate($createur)
+    {
+        global $pdo;
+
+        // Requete de recherche du nb de gîte
+        $SQLParam = "SELECT COUNT(id_gites) as nbGites FROM gites WHERE createur = $createur";
+        // Exécution de la requête
+        $Myresult = $pdo->query($SQLParam);
+        $Myresult->setFetchMode(PDO::FETCH_ASSOC);
+        $response = $Myresult->fetch();
+        $nbGites = $response["nbGites"];
+
+        return $nbGites;
+    }
+    
+    /**
+     * Fonction qui retourne à un propriétaire le nombre de réservations actives de ses gîtes
+     */
+    function showActiveReserv($createur)
+    {
+        global $pdo;
+
+        $SQLParam = "SELECT COUNT(*) as totalReservActive FROM reservation as P1"
+        . " LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites"
+        . " WHERE P2.createur = $createur AND etat_reservation = 0";
+        $response = requete($SQLParam);
+        return $response["totalReservActive"];
+    }
+
+
+    /**
+     * Fonction qui retourne à un proprétaire le nombre total de réservations de ses gîtes
+     */
+    function showTotalReserv($createur)
+    {
+        global $pdo;
+
+        $SQLParam = "SELECT COUNT(*) as totalReserv FROM reservation as P1"
+        . " LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites"
+        . " WHERE P2.createur = $createur";
+        $response = requete($SQLParam);
+        return $response["totalReserv"];
+    }
+
+    /**
+     * Fonction qui retourne le nombre total de gîtes enregistrés dans la base de données
+     */
+    function showTotalGites()
+    {
+        global $pdo;
+
+        $response = requete("SELECT COUNT(*) as totalGites FROM gites");
+        return $response["totalGites"];
+    }
+
+    /**
+     * Fonction qui retourne le nombre total d'utilisateurs enregistrés dans la base de données
+     */
+    function showTotalUsers()
+    {
+        global $pdo;
+
+        $response = requete("SELECT COUNT(*) as totalUsers FROM users");
+        return $response["totalUsers"];
+    }
+
+    /**
+     * Fonction permettant d'effectuer des requêtes plus simplement
+     */
+    function requete($requete)
+    {
+        global $pdo;
+
+        // Définition du type de requête
+        $def_type = explode(" ", $requete);
+        $type_req = $def_type[0];
+        // Si c'est une SELECT
+        if ($type_req == "SELECT")
+        {
+            $Myresult = $pdo->query($requete);
+            $Myresult->setFetchMode(PDO::FETCH_ASSOC);
+            $response = $Myresult->fetch();
+
+            return $response;
+        }
+        // Si c'est autre chose qu'une SELECT
+        else {
+            $response = $pdo->exec($requete);
+        }
     }
 ?>
 

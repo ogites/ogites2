@@ -106,9 +106,7 @@
                                 <?php
                                 // Définition du nom de l'expéditeur
                                 $SQLParam2 = "SELECT * FROM users WHERE id_users = $expediteur";
-                                $Myresult2 = $pdo->query($SQLParam2);
-                                $Myresult2->setFetchMode(PDO::FETCH_ASSOC);
-                                $info_expediteur = $Myresult2->fetch();
+                                $info_expediteur = requete($SQLParam2);
                                 ?>
                                 <h5><strong><?php echo $info_expediteur["nom"] . " " . $info_expediteur["prenom"] ?></strong></h5>
                                 <p><?php echo $messages["contenu"] ?></p>

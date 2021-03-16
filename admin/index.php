@@ -33,14 +33,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Nb. Gîtes</h5>
-                        <?php
-                        $SQLParam1 = "SELECT * FROM gites";
-                        $Myresult1 = $pdo->query($SQLParam1);
-                        $Myresult1->setFetchMode(PDO::FETCH_ASSOC);
-                        $info_gites = $Myresult1->fetch();
-                        $nb_gites = $Myresult1->rowCount();
-                        ?>
-                        <h3 class="card-text"><?php echo $nb_gites ?></h3>
+                        <h3 class="card-text"><?php echo showTotalGites() ?></h3>
                     </div>
                 </div>
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
@@ -59,14 +52,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Nb. Utilisateurs</h5>
-                        <?php
-                        $SQLParam3 = "SELECT * FROM users";
-                        $Myresult3 = $pdo->query($SQLParam3);
-                        $Myresult3->setFetchMode(PDO::FETCH_ASSOC);
-                        $info_users = $Myresult3->fetch();
-                        $nb_users = $Myresult3->rowCount();
-                        ?>
-                        <h3 class="card-text"><?php echo $nb_users ?></h3>
+                        <h3 class="card-text"><?php echo showTotalUsers() ?></h3>
                     </div>
                 </div>
             </div>
