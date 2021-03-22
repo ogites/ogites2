@@ -9,7 +9,7 @@
     // Initialisation de la session
     session_start(); 
     // Navbar de la page de résultat
-    header_page(0);
+    header_page(1);
 
     if (isset($_POST["searchbar"]))
     {
@@ -25,12 +25,11 @@
     <div class="container-fluid">
         <div class="container">
             <center>
-              <!-- Barre de recherche -->
+                <!-- Barre de recherche -->
                 <form action="view_gites.php?query=search" method="POST">
                     <div class="input-group mb-2 border rounded-pill p-1 w-50">
                         <input type="search" placeholder="Chercher un lieu" aria-describedby="button-addon3"
-                            name="searchbar" class="form-control bg-none border-0"
-                            value="<?php echo $ville ?>">
+                            name="searchbar" class="form-control bg-none border-0" value="<?php echo $ville ?>">
                         <div class="input-group-append border-0">
                             <button id="button-addon3" type="submit" class="btn btn-link text-success">
                                 <i class="fa fa-search"></i>
@@ -38,11 +37,12 @@
                         </div>
                     </div>
                     <button class="btn btn-success" type="submit">Recherche</button>
-                    <a href="view_gites.php?query=all" class="btn btn-warning"><span style="color:white;">Voir tout</span></a>
+                    <a href="view_gites.php?query=all" class="btn btn-warning"><span style="color:white;">Voir
+                            tout</span></a>
                 </form>
             </center>
         </div>
-        
+
         <!-- Affichage des gîtes -->
         <?php
         //  Liste des gîtes en fonction de la ville
@@ -63,31 +63,31 @@
         {
         ?>
         <br>
-            <?php
+        <?php
             if ($ville == "")
             {
             ?>
-            <h1><strong>LISTE DE TOUS LES GÎTES.</strong></h1>
-            <?php
+        <h1><strong>LISTE DE TOUS LES GÎTES.</strong></h1>
+        <?php
             }
             else
             {
             ?>
-            <h1><strong>RÉSULTAT(S) POUR <?php echo strtoupper($ville) ?>.</strong></h1>
-            <?php
+        <h1><strong>RÉSULTAT(S) POUR <?php echo strtoupper($ville) ?>.</strong></h1>
+        <?php
             }
             ?>
-            <br>
-            <div class="container">
-                <div class="row justify-content-start">
-                    <div class="card-deck">
-                        <?php
+        <br>
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="card-deck">
+                    <?php
                         while($Allresponse = $Myresult->fetch())
                         {
                         ?>
-                        <div class="col-6">
-                            <div class="col-12">
-                                <div class="card shadow-sm p-3 mb-5 bg-white rounded h-100">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <div class="card shadow-sm p-3 mb-5 bg-white rounded h-100">
                                 <?php
                                 $id_gites = $Allresponse["id_gites"];
                                 // Requête permettant d'obtenir une image de miniature pour un gîte
@@ -101,32 +101,35 @@
                                     $images_link = $images_gites["link_url"];
                                 }
                                 ?>
-                                    <!-- Miniature du gîtes -->
-                                    <?php
+                                <!-- Miniature du gîtes -->
+                                <?php
                                     if ($nb_images > 0)
                                     {
                                     ?>
-                                    <img src="<?php echo $images_link; ?>" class="card-img-top" alt="image-gite" style="height:300px;">
-                                    <?php
+                                <img src="<?php echo $images_link; ?>" class="card-img-top" alt="image-gite"
+                                    style="height:300px;">
+                                <?php
                                     }
                                     else
                                     {
                                     ?>
-                                    <h3 align="center">Aucune image.</h3>
-                                    <?php
+                                <h3 align="center">Aucune image.</h3>
+                                <?php
                                     }
                                     ?>
-                                    <div class="card-body">
-                                        <!-- Titre du gîte -->
-                                        <h5 class="card-title"><?php echo $Allresponse["libelle"] ?></h5>
-                                        <!-- Ville du gîte du gîte -->
-                                        <small><p class="card-text"><?php echo $Allresponse["localisation"] ?></p></small>
-                                        <!-- Description du gîte -->
-                                        <strong><p class="card-text"><?php echo $Allresponse["description"] ?></p></strong>
-                                        <br>
-                                        <!-- Lien vers le site d'origine du gîte -->
-                                        <a target="_blank" href="<?php echo $Allresponse["link_url"] ?>" class="btn btn-warning" style="color: white;">Voir plus</a>
-                                        <?php 
+                                <div class="card-body">
+                                    <!-- Titre du gîte -->
+                                    <h5 class="card-title"><?php echo $Allresponse["libelle"] ?></h5>
+                                    <!-- Ville du gîte du gîte -->
+                                    <small>
+                                        <p class="card-text"><?php echo $Allresponse["localisation"] ?></p>
+                                    </small>
+                                    <!-- Description du gîte -->
+                                    <strong>
+                                        <p class="card-text"><?php echo $Allresponse["description"] ?></p>
+                                    </strong>
+                                    <br>
+                                    <?php 
                                         // Savoir si le gîte est disponible
                                         $SQLParam3 = "SELECT * FROM reservation WHERE id_gites = $id_gites";
                                         $Myresult3 = $pdo->query($SQLParam3);
@@ -137,20 +140,21 @@
                                         if(isset($_SESSION["id_users"]))
                                         {
                                         ?>
-                                        <a href="info_gites2.php?id_gites=<?php echo $id_gites ?>" class="btn btn-success">Réserver</a>
-                                        <?php
+                                    <a href="info_gites2.php?id_gites=<?php echo $id_gites ?>"
+                                        class="btn btn-success">Réserver</a>
+                                    <?php
                                         }
                                         ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <?php
+                    </div>
+                    <?php
                         }
                         ?>
-                    </div>    
                 </div>
-            </div>    
+            </div>
+        </div>
         <?php
         }
         else

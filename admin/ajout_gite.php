@@ -19,6 +19,9 @@
     {
         $origin = "index";
     }
+    // Récupération de l'id de l'users connecté
+    $id_users = $_SESSION["id_users"];
+    //echo $id_users;
 ?>
 
 <!-- Contenu de la page -->
@@ -48,7 +51,7 @@
         <div class="container">
             <h5><i class="fa fa-info"></i> Veuillez inscrire les informations du gîte à ajouter au système.</h5>
             <br>
-            <form action="insert_gite.php?origin=<?php echo $origin ?>" method="POST" class="border-top">
+            <form action="insert_gite.php?createur=<?php echo $id_users ?>&origin=<?php echo $origin ?>" method="POST" class="border-top">
                 <?php
                 if (isset($_REQUEST["error"]))
                 {
@@ -65,11 +68,15 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="libelle">Nb. personnes Max</label>
-                        <input type="number" class="form-control" name="nb_personnes_max" required>
+                        <input type="number" class="form-control" name="nb_personnes_max" min="1" placeholder="1" value="1" required>
                     </div>
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-3">
                         <label for="libelle">Localisation (Ville)</label>
                         <input type="text" class="form-control" name="localisation" placeholder="Localisation du gîte" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="libelle">€/Nuit (Prix indicatif)</label>
+                        <input type="number" class="form-control" name="prix_nuit" min="1" placeholder="1" value="1" required>
                     </div>
                 </div>
                 <div class="form-group">

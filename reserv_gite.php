@@ -31,8 +31,8 @@
     $libelle = $nom["libelle"];
 
     //requete pour réservation du gite 
-    $sql = "insert into reservation(libelle, date_debut, date_fin, nb_personnes, date_reserv, id_gites, id_users)"
-    ." values ('$libelle', '$date_debut', '$date_fin', $selectPersonne, NOW(), $id_gites, $id_users)";
+    $sql = "insert into reservation(libelle, date_debut, date_fin, nb_personnes, date_reserv, id_gites, id_users, etat_reservation)"
+    ." values ('$libelle', '$date_debut', '$date_fin', $selectPersonne, NOW(), $id_gites, $id_users, 0)";
     //echo $sql;
     $result2 = $pdo->exec($sql);
 

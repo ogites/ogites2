@@ -1,6 +1,6 @@
 <!--
     Script permettant de définir un utilsateur
-    comme administrateur
+    comme proprio
 -->
 <?php
     // Ajout du header
@@ -16,7 +16,7 @@
     }
 
     // Modification de la catégorie de l'users
-    change_categ("admin", $id_users);
+    change_categ("proprio", $id_users);
 
     // Retour à la page d'origine
     header("Location: gerer_perm.php");

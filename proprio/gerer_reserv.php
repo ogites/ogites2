@@ -48,6 +48,7 @@
                         <th class="white">Date de début</th>
                         <th class="white">Date de fin</th>
                         <th class="white">Client</th>
+                        <th class="white" width="5%">État</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +81,23 @@
                         $nom_prenom_user = $info_users["nom"] . " " . $info_users["prenom"];
                         ?>
                         <td><?php echo $nom_prenom_user ?></td>
+                        <td align="center">
+                            <?php
+                            $etat_reserv = $info_reserv["etat_reservation"];
+                            if ($etat_reserv == 0)
+                            {
+                            ?>
+                            <a href="valide_reserv.php?id_reserv=<?php echo $info_reserv["id_reservation"]  ?>" class="btn btn-danger"><i class="fa fa-clock-o white"></i></a>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+                            <button class="btn btn-success"><i class="fa fa-check white"></i></button>
+                            <?php
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <?php
                         $xc++;

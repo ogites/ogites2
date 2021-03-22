@@ -25,10 +25,9 @@
         <div class="container">
             <?php
             // Récupérer la liste des utilisateurs
-            $SQLParam = "SELECT * FROM users";
-            $Myresult = $pdo->query($SQLParam);
-            $Myresult->setFetchMode(PDO::FETCH_ASSOC);
-            $nb_users = $Myresult->rowCount();
+            $SQLParam = "SELECT * FROM users ORDER BY date_inscription";
+            $response = toFetch($SQLParam);
+            $nb_users = toCount($SQLParam);
 
             if ($nb_users > 0)
             {
@@ -48,7 +47,7 @@
                 <tbody>
                     <?php
                     $xc = 1;
-                    while ($info_users = $Myresult->fetch())
+                    while ($info_users = $response->fetch())
                     {
                     ?>
                     <tr>
@@ -57,20 +56,90 @@
                         <td><?php echo $info_users["nom"] . " " . $info_users["prenom"]; ?></td>
                         <td><?php echo $info_users["email"] ?></td>
                         <td><?php echo datefr($info_users["date_inscription"]) ?></td>
-                        <?php
-                        if ($info_users["id_categorie"] == 1)
-                        {
-                        ?>
-                        <td>Administrateur</td>
-                        <?php
-                        }
-                        else
-                        {
-                        ?>
-                        <td><a href="set_admin.php?id_users=<?php echo $info_users['id_users'] ?>" class="btn btn-danger">Définir comme administrateur</a></td>
-                        <?php
-                        }
-                        ?>
+                        <!-- Définir la catégorie de l'utilisateur -->
+                        <td>
+                            <style>
+                                a {
+                                    color: #fff;
+                                }
+                                a:hover {
+                                    color: #fff;
+                                }
+                                .selected {
+                                    font-weight: bold;
+                                    text-decoration: underline;
+                                }
+                            </style>
+                            <?php
+                            $categorie = $info_users["id_categorie"];
+                            $id_users = $info_users["id_users"];
+
+                            // Switch sur la categorie de l'utilisateur afin d'afficher
+                            // le bon bouton selectionné
+                            switch ($categorie)
+                            {
+                                // Pour un admin
+                                case 1:
+                            ?>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option1" autocomplete="off"> 
+                                        <a href="set_client.php?id_users=<?php echo $id_users ?>">Client</a>
+                                    </label>
+                                    <label class="btn btn-primary" active>
+                                        <input type="radio" name="options" id="option2" autocomplete="off" checked>
+                                        <span class="selected white">Admin</span>
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option3" autocomplete="off">
+                                        <a href="set_proprio.php?id_users=<?php echo $id_users ?>">Proprio</a>
+                                    </label>
+                                </div>
+                            <?php
+                                break;
+
+                                // Pour un client
+                                case 2:
+                            ?>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-warning" active>
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked> 
+                                        <span class="selected white">Client</span>
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option2" autocomplete="off">
+                                        <a href="set_admin.php?id_users=<?php echo $id_users ?>">Admin</a>
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option3" autocomplete="off">
+                                        <a href="set_proprio.php?id_users=<?php echo $id_users ?>">Proprio</a>
+                                    </label>
+                                </div>
+                            <?php
+                                break;
+
+                                // Pour un propriétaire
+                                case 3:
+                            ?>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option1" autocomplete="off"> 
+                                        <a href="set_client.php?id_users=<?php echo $id_users ?>">Client</a>
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="options" id="option2" autocomplete="off">
+                                        <a href="set_admin.php?id_users=<?php echo $id_users ?>">Admin</a>
+                                    </label>
+                                    <label class="btn btn-success" active>
+                                        <input type="radio" name="options" id="option3" autocomplete="off" checked>
+                                        <span class="selected white">Proprio</span>
+                                    </label>
+                                </div>
+                            <?php
+                                break;
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <?php
                         $xc++;
@@ -90,3 +159,10 @@
         </div>
     </div>
 </main>
+
+<?php
+	// Ajout de script Javascript
+	require_once '../javascripts.php';
+	// Ajout du footer
+	require_once '../footer.php';
+?>

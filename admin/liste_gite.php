@@ -40,6 +40,7 @@
                         <th class="white" style="width: 5%;">#</th>
                         <th class="white" style="width: 20%;">Libelle</th>
                         <th class="white">Description</th>
+                        <th class="white">Propriétaire</th>
                         <th class="white" style="width: 15%;">Localisation</th>
                         <th class="white" style="width: 10%;">Gestion</th>
                     </tr>
@@ -52,9 +53,19 @@
                     ?>
                     <tr>
                         <td><?php echo $xc; ?></td>
+                        <!-- Libelle du gîte -->
                         <td><a href="<?php echo $info_gites["link_url"]; ?>" class="black"><?php echo $info_gites["libelle"]; ?></a></td>
-                        <td><?php echo $info_gites["description"]; ?></td>
+                        <!-- Description du gîte -->
+                        <td><?php echo reduceText($info_gites["description"], 50); ?></td>
+                        <!-- Proprio du gîte -->
+                        <?php
+                        $createur = $info_gites["createur"];
+                        $info_proprio = requete("SELECT * FROM users WHERE id_users = $createur");
+                        ?>
+                        <td><?php echo $info_proprio["nom"] . " " . $info_proprio["prenom"] ?></td>
+                        <!-- Localisation du gîte -->
                         <td><?php echo $info_gites["localisation"]; ?></td>
+                        <!-- Bouton de gestion -->
                         <td><a href="gerer_gite.php?id_gites=<?php echo $info_gites['id_gites']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit white"></i><strong> <span class="white">Gérer</span></strong></a></td>
                     </tr>
                     <?php

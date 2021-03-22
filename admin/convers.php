@@ -22,7 +22,7 @@
         <!-- Titre de la page -->
         <h1 style="float: left;"><strong>CONVERSATION</strong></h1>
         <!-- Bouton Retour -->
-        <a href="messagerie.php" class="btn btn-info btn-lg" style="float: right">
+        <a href="messagerie_admin.php" class="btn btn-info btn-lg" style="float: right">
             <strong class="white">RETOUR</strong>
         </a>
         <!-- Nettoyage du flottement -->
@@ -131,9 +131,9 @@
                                 <?php 
                                 // Définition de la date et de l'heure d'envoi du message
                                 $date_heure = explode(" ", $messages["date_heure"]);
-                                $date_envoi = datefr($date_heure[0]); 
+                                $date_envoi = datefr($date_heure[0]);  
                                 // Définition de l'heure d'envoi
-                                $heure_envoi = substr($date_heure[1], 0, -3); 
+                                $heure_envoi = substr($date_heure[1], 0, -3);
                                 ?>
                                 <p style="text-align: right;"><small><?php echo $date_envoi . " " . $heure_envoi ?></small></p>
                             </div>

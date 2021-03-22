@@ -3,7 +3,7 @@
 -->
 <?php
     // Titre de la page
-    $title = "Messagerie - Ô'GÎTES";
+    $title = "Messagerie Admin - Ô'GÎTES";
     // Ajout du header
     require_once 'head.php';
     require_once 'config_admin.php';
@@ -19,7 +19,7 @@
 <main role="main" class="flex-shrink-0">
     <div class="container-fluid" id="index">
         <!-- Titre de la page -->
-        <h1 style="float: left;"><strong>MESSAGERIE</strong></h1>
+        <h1 style="float: left;"><strong>MESSAGERIE ADMINISTRATEUR</strong></h1>
         <!-- Bouton Retour -->
         <a href="index.php" class="btn btn-info btn-lg" style="float: right;"><strong class="white">RETOUR</strong></a>
         <!-- Nettoyage du flottement -->

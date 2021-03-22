@@ -13,6 +13,11 @@
     {
         $origin = $_REQUEST["origin"];
     }
+    // Récupération de l'id_users du createur
+    if (isset($_REQUEST["createur"]))
+    {
+        $createur = $_REQUEST["createur"];
+    }
 
     // Récupération des données du formulaire
     if(isset($_POST["libelle"]))
@@ -39,13 +44,16 @@
     {
         $link_image = $_POST["link_image"];
     }
+    if(isset($_POST["prix_nuit"]))
+    {
+        $prix_nuit = $_POST["prix_nuit"];
+    }
 
     // Vérification que le gîte n'existe pas
     $SQLParam1 = "SELECT * from gites WHERE link_url = '$link_url'";
-    $Myresult1 = $pdo->query($SQLParam1);
-    $verif_gite = $Myresult1->rowCount();
+    $verif_gite = toCount($SQLParam1);
 
-    if ($verif_gite > 0) // Si le gîte n'existe
+    if ($verif_gite > 0) // Si le gîte existe
     {
         // Message d'erreur : Ce gîte existe déjà
         header("Location:ajout_gite.php?origin=$origin&error=true");
@@ -53,22 +61,19 @@
     else // Si le gîte n'existe pas
     {
         // Insertion dans la base de données
-        $SQL_insert1 = "INSERT INTO gites (libelle, description, localisation, link_url, nb_personnes_max)"
-        . " VALUES ('$libelle', '$description', '$localisation', '$link_url', '$nb_personnes_max')";
-        echo $SQL_insert1;
-        $Myinsert1 = $pdo->exec($SQL_insert1);
+        $SQL_insert1 = "INSERT INTO gites (createur, libelle, description, localisation, link_url, nb_personnes_max, prix_nuit)"
+        . " VALUES ('$createur', '$libelle', '$description', '$localisation', '$link_url', '$nb_personnes_max', '$prix_nuit')";
+        $Myinsert1 = requete($SQL_insert1);
 
         // Récupération de l'id_gites afin d'associer l'image
         $SQLParam2 = "SELECT * from gites WHERE link_url = '$link_url'";
-        $Myresult2 = $pdo->query($SQLParam2);
-        $Myresult2->setFetchMode(PDO::FETCH_ASSOC);
-        $gite_insere = $Myresult2->fetch();
+        $gite_insere = requete($SQLParam2);
         $id_gites = $gite_insere["id_gites"];
 
         // Insert de l'image du gîte
         $SQL_insert2 = "INSERT INTO images_gites (id_gites, link_url)"
         . " VALUES ('$id_gites', '$link_image')";
-        $Myinsert2 = $pdo->exec($SQL_insert2);
+        $Myinsert2 = requete($SQL_insert2);
 
         // Redirection vers la liste des gîtes
         header("Location:liste_gite.php");

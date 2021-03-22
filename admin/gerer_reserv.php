@@ -26,10 +26,10 @@
 
             <?php
             // Récupérer la liste des réservations
-            $SQLParam = "SELECT * FROM reservation";
-            $Myresult = $pdo->query($SQLParam);
-            $Myresult->setFetchMode(PDO::FETCH_ASSOC);
-            $nb_reserv = $Myresult->rowCount();
+            $SQLParam = "SELECT * FROM reservation ORDER BY date_debut";
+            $Myresult = toFetch($SQLParam);
+            $nb_reserv = toCount($SQLParam);
+            //echo $nb_reserv;
 
             if ($nb_reserv > 0)
             {
@@ -43,6 +43,7 @@
                         <th class="white">Date de début</th>
                         <th class="white">Date de fin</th>
                         <th class="white">Client</th>
+                        <th class="white">État</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,24 +58,45 @@
                         // Récupération du libelle du gîte réservé
                         $id_gites = $info_reserv["id_gites"];
                         $SQLParam2 = "SELECT * FROM gites WHERE id_gites = $id_gites";
-                        $Myresult2 = $pdo->query($SQLParam2);
-                        $Myresult2->setFetchMode(PDO::FETCH_ASSOC);
-                        $info_gites = $Myresult2->fetch();
+                        $info_gites = requete($SQLParam2);
                         $libelle_gite = $info_gites["libelle"];
                         ?>
+                        <!-- Libelle du gîte -->
                         <td><?php echo $libelle_gite ?></td>
+                        <!-- Date de début de la réservation -->
                         <td><?php echo datefr($info_reserv["date_debut"]) ?></td>
+                        <!-- Date de fin de la réservation -->
                         <td><?php echo datefr($info_reserv["date_fin"]) ?></td>
                         <?php
                         // Récupération du nom et prénom du client qui a réservé
                         $id_users = $info_reserv["id_users"];
+                        //echo $id_users;
                         $SQLParam3 = "SELECT * FROM users WHERE id_users = $id_users";
-                        $Myresult3 = $pdo->query($SQLParam3);
-                        $Myresult3->setFetchMode(PDO::FETCH_ASSOC);
-                        $info_users = $Myresult3->fetch();
+                        //echo $SQLParam3;
+                        $info_users = requete($SQLParam3);
                         $nom_prenom_user = $info_users["nom"] . " " . $info_users["prenom"];
                         ?>
+                        <!-- Nom du client ayant réservé -->
                         <td><?php echo $nom_prenom_user ?></td>
+                        <!-- État de la réservation (Effectué ou non) -->
+                        <?php
+                        $etat_reservation = $info_reserv["etat_reservation"];
+                        //echo $etat_reservation;
+                        // Si la réservation a été validée
+                        if ($etat_reservation == 1)
+                        {
+                        ?>
+                        <td><button class="btn btn-success"><i class="fa fa-check white"></i></button></td>
+                        <?php
+                        }
+                        // Si la réservation est en cours
+                        else
+                        {
+                        ?>
+                        <td><button class="btn btn-danger"><i class="fa fa-clock-o white"></i></button></td>
+                        <?php
+                        }
+                        ?>
                     </tr>
                     <?php
                         $xc++;

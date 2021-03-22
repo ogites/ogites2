@@ -276,58 +276,9 @@
     {
         global $pdo;
 
-        // Requete d'insertion dans la table message
-        $SQLParam = "INSERT INTO messages (expediteur, destinataire, contenu)"
-        . " VALUES ($expediteur, $destinataire, '$contenu')";
-        // Exécution de la requête
-        $Myresult = $pdo->exec($SQLParam);
-    }
-
-    /**
-     * Fonction qui retourne le nombre de gîtes créé par un utilisateur
-     */
-    function nbGitesCreate($createur)
-    {
-        global $pdo;
-
-        // Requete de recherche du nb de gîte
-        $SQLParam = "SELECT COUNT(id_gites) as nbGites FROM gites WHERE createur = $createur";
-        // Exécution de la requête
-        $Myresult = $pdo->query($SQLParam);
-        $Myresult->setFetchMode(PDO::FETCH_ASSOC);
-        $response = $Myresult->fetch();
-        $nbGites = $response["nbGites"];
-
-        return $nbGites;
-    }
-    
-    /**
-     * Fonction qui retourne à un propriétaire le nombre de réservations actives de ses gîtes
-     */
-    function showActiveReserv($createur)
-    {
-        global $pdo;
-
-        $SQLParam = "SELECT COUNT(*) as totalReservActive FROM reservation as P1"
-        . " LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites"
-        . " WHERE P2.createur = $createur AND etat_reservation = 0";
+        $SQLParam = "INSERT INTO messages (expediteur, destinataire, contenu, type_message)"
+        . " VALUES ('$expediteur', '$destinataire', '$contenu', '2')";
         $response = requete($SQLParam);
-        return $response["totalReservActive"];
-    }
-
-
-    /**
-     * Fonction qui retourne à un proprétaire le nombre total de réservations de ses gîtes
-     */
-    function showTotalReserv($createur)
-    {
-        global $pdo;
-
-        $SQLParam = "SELECT COUNT(*) as totalReserv FROM reservation as P1"
-        . " LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites"
-        . " WHERE P2.createur = $createur";
-        $response = requete($SQLParam);
-        return $response["totalReserv"];
     }
 
     /**
@@ -339,6 +290,69 @@
 
         $response = requete("SELECT COUNT(*) as totalGites FROM gites");
         return $response["totalGites"];
+    }
+
+    /**
+     * Fonction qui retourne le nombre de gîtes créé par un utilisateur
+     */
+    function nbTotalGitesByCreator($createur)
+    {
+        global $pdo;
+
+        $SQLParam = "SELECT COUNT(*) as nbGitesCreate FROM gites WHERE createur = $createur";
+        $response = requete($SQLParam);
+        return $response["nbGitesCreate"];
+    }
+
+    /**
+     * Fonction qui retourne le nombre total de réservations enregistrées dans la base de données
+     */
+    function showTotalReserv()
+    {
+        global $pdo;
+
+        $response = requete("SELECT COUNT(*) as totalReserv FROM reservation");
+        return $response["totalReserv"];
+    }
+
+    /**
+     * Fonction qui retourne à un proprétaire le nombre total de réservations de ses gîtes
+     */
+    function showTotalReservByCreator($createur)
+    {
+        global $pdo;
+
+        $SQLParam = "SELECT COUNT(*) as totalReserv FROM reservation as P1"
+        . " LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites"
+        . " WHERE P2.createur = $createur";
+        $response = requete($SQLParam);
+        return $response["totalReserv"];
+    }
+
+    /**
+     * Fonction qui retourne le nombre total de réservations actives
+     */
+    function showTotalActiveReserv()
+    {
+        global $pdo;
+
+        $SQLParam = "SELECT COUNT(*) as totalActiveReserv FROM reservation"
+        . " WHERE etat_reservation = 0";
+        $response = requete($SQLParam);
+    }
+
+    /**
+     * Fonction qui retourne à un propriétaire le nombre de réservations actives de ses gîtes
+     */
+    function showTotalActiveReservByCreator($createur)
+    {
+        global $pdo;
+
+        $SQLParam = "SELECT COUNT(*) as totalReservActive FROM reservation as P1"
+        . " LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites"
+        . " WHERE P2.createur = $createur AND etat_reservation = 0";
+        $response = requete($SQLParam);
+        return $response["totalReservActive"];
     }
 
     /**
@@ -375,6 +389,123 @@
         else {
             $response = $pdo->exec($requete);
         }
+    }
+
+    /**
+     * Fonction qui retourne le résultat d'une requête à fetch pour une boucle
+     */
+    function toFetch($requete)
+    {
+        global $pdo;
+
+        $Myresult = $pdo->query($requete);
+        $Myresult->setFetchMode(PDO::FETCH_ASSOC);
+        return $Myresult;
+    }
+    /**
+     * Fonction qui retourne le nombre de résultat d'une requête
+     */
+    function toCount($requete)
+    {
+        global $pdo;
+
+        $Myresult = toFetch($requete);
+        $nb_result = $Myresult->rowCount();
+        return $nb_result;
+    }
+
+    /**
+     * Fonction qui permet d'ajouter une connexion au journal de connexion
+     */
+    function addLogConnection($id_users)
+    {
+        global $pdo;
+
+        $SQLParam = "INSERT INTO connexion_log (id_users) VALUES ($id_users)";
+        $Myresult = requete($SQLParam);
+    }
+
+    /**
+     * Fonction permettant de changer la catégorie d'un utilisateur
+     */
+    function change_categ($categorie, $id_users)
+    {
+        global $pdo, $id_users;
+
+        switch ($categorie)
+        {
+            // Changer en admin
+            case "admin":
+                requete("UPDATE users SET id_categorie = 1 WHERE id_users = $id_users");
+            break;
+
+            // Changer en client
+            case "client":
+                requete("UPDATE users SET id_categorie = 2 WHERE id_users = $id_users");
+            break;
+
+            // Changer en proprio
+            case "proprio":
+                requete("UPDATE users SET id_categorie = 3 WHERE id_users = $id_users");
+            break;
+        }
+    }
+    /**
+     * Fonction qui permet de verifer des choses
+     */
+    function verif($type)
+    {
+        global $pdo, $nom, $prenom, $pseudo, $email, $tel, $mdp, $erreurMessage, $id_gites;
+
+        switch($type) 
+        {
+            case "inscription": // Verification à l'inscription
+        
+                // Vérifier si le pseudo existe déjà
+                $SQLParam = "SELECT pseudo FROM users WHERE pseudo = '$pseudo' ";
+                $info_pseudo = toCount($SQLParam);
+                if ($info_pseudo != 0) // Si le pseudo existe
+                {
+                    $erreurMessage = "Ce pseudo est déja utilisé. Veuillez en choisir un autre.";
+                    return false;
+                } 
+                else // S'il n'existe pas
+                {
+                    // Vérification de l'email
+                    $SQLParam2 = "SELECT email FROM users WHERE email = '$email' ";
+                    $info_mail = toCount($SQLParam2);
+                    if ($info_mail != 0) // Si le mail existe
+                    {
+                        $erreurMessage = "Cette adresse e-mail est déja utilisée. Veuillez en choisir une autre.";
+                        return false;
+                    } 
+                    else // Si l'email n'existe pas
+                    {
+                        //Insertion d'un client (requete SQL INSERT) 
+                        $insererUnClient = $pdo->prepare("INSERT INTO users(pseudo, nom, prenom, email, tel, mdp, date_inscription, id_categorie) VALUES(?, ?, ?, ?, ?, ?, CURDATE(), 2)");
+                        $insererUnClient->execute(array(
+                            $pseudo,
+                            $nom,
+                            $prenom,
+                            $email,
+                            $tel,
+                            $mdp
+                        ));
+                        return true;
+                    }
+                }
+            break;
+        }
+    }
+
+    /**
+     * Fonction permettant de valider une reservation
+     */
+    function valideReserv($id_reserv)
+    {
+        global $pdo;
+
+        requete("UPDATE reservation SET etat_reservation = 1 WHERE id_reservation = $id_reserv");
     }
 ?>
 
