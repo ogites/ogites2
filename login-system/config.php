@@ -125,15 +125,28 @@
                 		{
                         ?>
                         
-                        <?php 
-                        if ($_SESSION['id_categorie'] == 1)
+                        <?php
+                        //echo $_SESSION["id_categorie"];
+                        switch ($_SESSION['id_categorie'])
                         {
-                        ?>  
+                            // Si l'utilisateur est un admin
+                            case 1:
+                        ?>
                             <li class="nav-item" >
                                 <a class="nav-link" href="/ogites2/admin/index.php">Espace Admin</a>
                             </li>
                         <?php
-                        } 
+                            break;
+
+                            // Si l'utilisateur est un proprio
+                            case 3:
+                        ?>
+                            <li class="nav-item" >
+                                <a class="nav-link" href="/ogites2/proprio/index.php">Espace Proprio</a>
+                            </li>
+                        <?php
+                            break;
+                        }
                         ?>
                         <li class="nav-item">
                             <a href="/ogites2/all_reservation.php" class="nav-link">Mes réservations</a>
