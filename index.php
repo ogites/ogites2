@@ -65,21 +65,52 @@
 				<div class="slideshow">
 					<?php include 'assets/slideshow.php'; ?>
 				</div>-->
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
-                    <div class="carousel-inner">
+                <div id="carouselImgGites" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <style>
+                        .carousel-item img {
+                            width: 800px;
+                            height: 500px;
+                            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                            border-radius: 3px;
+                        }
+                        .carousel-caption {
+                            background-color: rgba(255, 255, 255, .15);  
+                            backdrop-filter: blur(5px);
+                            width: 500px;
+                            height: 100px;
+                            border-radius: 3px;
+                            margin: 0 auto;
+                        }
+                    </style>
+                    <div class="carousel-inner" style="height:530px;">
                         <?php
-                        $response = toFetch("SELECT link_url FROM images_gites");
-                        $firstImage = requete("SELECT link_url FROM images_gites LIMIT 1");
+                        $nbImg = toCount("SELECT * FROM images_gites");
+                        $response = toFetch("SELECT * FROM images_gites LIMIT $nbImg OFFSET 1");
+                        $firstImage = requete("SELECT * FROM images_gites LIMIT 1");
+                        $idFirstGite = $firstImage["id_gites"];
+                        $infoFirstImage = requete("SELECT * FROM gites WHERE id_gites = $idFirstGite");
                         ?>
                         <div class="carousel-item active">
-                            <img src="<?php echo $firstImage["link_url"]  ?>" alt="" style="width:800px; height:500px;">
+                            <img src="<?php echo $firstImage["link_url"]  ?>" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5><strong style="color:#fff"><?php echo $infoFirstImage["libelle"]  ?></strong></h5>
+                                <p><strong style="color:#fff"><i class="fa fa-map-marker" style="color:#fff"></i> <?php echo $infoFirstImage["localisation"]  ?></strong></p>
+                            </div>
                         </div>
                         <?php
                         while ($image = $response->fetch())
                         {
                         ?>
                             <div class="carousel-item">
-                                <img src="<?php echo $image["link_url"]  ?>" alt="First slide" style="width:800px; height:500px;">
+                                <img src="<?php echo $image["link_url"]  ?>" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <?php
+                                    $idGites = $image["id_gites"];
+                                    $infoImage = requete("SELECT * FROM gites WHERE id_gites = $idGites");
+                                    ?>
+                                    <h5><strong style="color:#fff"><?php echo $infoImage["libelle"]  ?></strong></h5>
+                                    <p><strong style="color:#fff"><i class="fa fa-map-marker" style="color:#fff"></i> <?php echo $infoImage["localisation"]  ?></strong></p>
+                                </div>
                             </div>
                         <?php
                         }

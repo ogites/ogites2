@@ -41,9 +41,71 @@
                         $image_gites = requete($sql_image_gite);
                         $image_link = $image_gites["link_url"];
                     ?>
-                    <!-- Image du gîte -->
-                    <img src="<?php echo $image_link; ?>" alt="image-gite"
-                        style="height:450px; box-shadow: 1px 1px 12px #555;">
+                    <!-- Images du gîte -->
+                    <div id="carouselImgGite" class="carousel slide" data-ride="carousel" data-interval="10000">
+                        <?php
+                        $nbImg = toCount("SELECT * FROM images_gites WHERE id_gites = $id_gites");
+                        ?>
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselImgGite" data-slide-to="0" class="active"></li>
+                            <?php
+                            for ($i = 1 ; $i < $nbImg ; $i++)
+                            {
+                            ?>
+                            <li data-target="#carouselImgGite" data-slide-to="<?php echo $i ?>"></li>
+                            <?php
+                            }
+                            ?>
+                        </ol>
+                        <style>
+                            .carousel-item img {
+                                width: 800px;
+                                height: 530px;
+                                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                                border-radius: 3px;
+                            }
+                            /*.carousel-control.prev,
+                            .carousel-control.next {
+                                left: 0;
+                                z-index: 1;
+                            }*/
+                        </style>
+                        <div class="carousel-inner" style="height:530px;">
+                            <?php
+                            $response = toFetch("SELECT * FROM images_gites WHERE id_gites = $id_gites LIMIT $nbImg OFFSET 1");
+                            $firstImage = requete("SELECT * FROM images_gites WHERE id_gites = $id_gites LIMIT 1");
+                            ?>
+                            <div class="carousel-item active">
+                                <img src="<?php echo $firstImage["link_url"] ?>" alt="First slide">
+                            </div>
+                            <?php
+                            while ($image = $response->fetch())
+                            {
+                            ?>
+                            <div class="carousel-item">
+                                <img src="<?php echo $image["link_url"] ?>" alt="">
+                            </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                        if ($nbImg > 1) {
+                        ?>
+                        <a class="carousel-control-prev" href="#carouselImgGite"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselImgGite"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <?php } ?>
+                    </div>
+                   <!-- <img src="<?php echo $image_link; ?>" alt="image-gite"
+                        style="height:450px; box-shadow: 1px 1px 12px #555;">-->
                     <br><br>
                     <!-- Localisation -->
                     <h3><strong>Localisation : </strong><?php echo $Allgite["localisation"]; ?></h3>
