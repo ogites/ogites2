@@ -66,12 +66,12 @@
                                 <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
-                		        <li class="nav-item">
+                		        <!--<li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
     	    			        <li class="nav-item">
                 		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
-                		        </li>
+                		        </li>-->
                                 <?php
                             break;
 
@@ -81,6 +81,10 @@
                                 <li class="nav-item active">
                   			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
+                                <?php
+                                if (!isset($_SESSION['id_users']))
+                                {
+                                ?>
                 		        <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
@@ -88,6 +92,7 @@
                 		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
+                                }
                             break;
                             
                             // Présentation
@@ -96,6 +101,10 @@
                                 <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
+                                <?php
+                                if (!isset($_SESSION['id_users']))
+                                {
+                                ?>
                 		        <li class="nav-item active">
                   			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
@@ -103,6 +112,7 @@
                 		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
+                                }
                             break;
                             
                             // À propos
@@ -111,6 +121,10 @@
                                 <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
+                                <?php
+                                if (!isset($_SESSION['id_users']))
+                                {
+                                ?>
                 		        <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
@@ -118,6 +132,7 @@
                 		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
                 		        </li>
                                 <?php
+                                }
                             break;
                         }
                         // Si l'utilisateur est connecté
