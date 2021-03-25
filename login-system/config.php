@@ -50,7 +50,7 @@
     ?>
         <header>
       	    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-            	<strong><a class="navbar-brand" href="index.php">Ô'GÎTES</a></strong>
+            	<strong><a class="navbar-brand" href="/ogites2/index.php">Ô'GÎTES</a></strong>
             	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
               		aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
               	    <span class="navbar-toggler-icon"></span>

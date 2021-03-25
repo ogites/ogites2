@@ -28,8 +28,12 @@ function header_admin($onglet)
                         case 0:
                             ?>
                             <li class="nav-item">
-                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
+                            <?php
+                            if (!isset($_SESSION['id_users']))
+                            {
+                            ?>
                             <li class="nav-item">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                             </li>
@@ -37,14 +41,19 @@ function header_admin($onglet)
                                   <a class="nav-link" href="/ogites2/about.php">À propos</a>
                             </li>
                             <?php
+                            }
                         break;
 
                         // Accueil
                         case 1:
                             ?>
                             <li class="nav-item active">
-                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
+                            <?php
+                            if (!isset($_SESSION['id_users']))
+                            {
+                            ?>
                             <li class="nav-item">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                             </li>
@@ -52,14 +61,19 @@ function header_admin($onglet)
                                   <a class="nav-link" href="/ogites2/about.php">À propos</a>
                             </li>
                             <?php
+                            }
                         break;
                         
                         // Présentation
                         case 2:
                             ?>
                             <li class="nav-item">
-                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
+                            <?php
+                            if (!isset($_SESSION['id_users']))
+                            {
+                            ?>
                             <li class="nav-item active">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                             </li>
@@ -67,14 +81,19 @@ function header_admin($onglet)
                                   <a class="nav-link" href="/ogites2/about.php">À propos</a>
                             </li>
                             <?php
+                            }
                         break;
                         
                         // À propos
                         case 3:
                             ?>
                             <li class="nav-item">
-                                  <a class="nav-link" href="/ogites2/admin/index.php">Accueil <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
                             </li>
+                            <?php
+                            if (!isset($_SESSION['id_users']))
+                            {
+                            ?>
                             <li class="nav-item">
                                   <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                             </li>
@@ -82,17 +101,42 @@ function header_admin($onglet)
                                   <a class="nav-link" href="/ogites2/about.php">À propos</a>
                             </li>
                             <?php
+                            }
                         break;
                     }
                     // Si l'utilisateur est connecté
                     if (isset($_SESSION['id_users']) AND isset($_SESSION['pseudo']))
                     {
                     ?>
+                    
+                    <?php
+                    //echo $_SESSION["id_categorie"];
+                    switch ($_SESSION['id_categorie'])
+                    {
+                        // Si l'utilisateur est un admin
+                        case 1:
+                    ?>
+                        <li class="nav-item" >
+                            <a class="nav-link" href="/ogites2/admin/index.php">Espace Admin</a>
+                        </li>
+                    <?php
+                        break;
+
+                        // Si l'utilisateur est un proprio
+                        case 3:
+                    ?>
+                        <li class="nav-item" >
+                            <a class="nav-link" href="/ogites2/proprio/index.php">Espace Proprio</a>
+                        </li>
+                    <?php
+                        break;
+                    }
+                    ?>
                     <li class="nav-item">
                         <a href="/ogites2/all_reservation.php" class="nav-link">Mes réservations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ogites2/login-system/param.php">Mon Compte</a>
+                        <a class="nav-link" href="/ogites2/login-system/param.php">Mon compte</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>
@@ -103,14 +147,14 @@ function header_admin($onglet)
                     {
                     ?>
                     <li class="nav-item">
-                          <a class="nav-link btn btn-success" href="/ogites2/login-system/connexion.php"><span style="color:white;">Connexion</span></a>
+                          <a class="nav-link btn btn-success" href="/ogites2/login-system/connexion.php"><i class="fa fa-sign-in" style="color:white;"></i> <span style="color:white;">Connexion</span></a>
                     </li>
                     <?php
                     }
                     ?>
                   </ul>
             </div>
-        </nav>
+          </nav>
 </header>
 <?php
 }
