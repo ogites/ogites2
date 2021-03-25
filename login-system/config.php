@@ -176,8 +176,8 @@
                 		</li>
                         <?php
                         if ($_SESSION["id_categorie"] == 2){
-                            $SQLParam = "SELECT * FROM messages WHERE expediteur = " . $_SESSION['id_users']
-                            . " OR destinataire = " . $_SESSION['id_users'] . " ORDER BY id_message DESC LIMIT 1";
+                            $SQLParam = "SELECT * FROM messages WHERE"
+                            . " destinataire = " . $_SESSION['id_users'] . " ORDER BY id_message DESC LIMIT 1";
                             //echo $SQLParam;
                             $response = requete($SQLParam);
 
@@ -195,7 +195,7 @@
                             <li class="nav-item">
                                 <a href="/ogites2/messagerie.php" class="nav-link"><i class="fa fa-envelope"></i></a>
                             </li>
-                            <span class='badge' style='width: 20px;height: 20px;border-radius: 10px;background:#F02F0C;color:#fff;' id='notifier-btn'> </span>
+                            <span class='badge' style='width: 10px;height: 10px;border-radius: 10px;background:#F02F0C;color:#fff;' id='notifier-btn'> </span>
                             <?php
                             }
                         }
@@ -509,6 +509,17 @@
             break;
         }
     }
+
+     /**
+     * Fonction retournant la dernière réservation d'un gîte
+     */
+    function lastReserv($id_gites)
+    {
+        $SQLParam = "SELECT * FROM reservation WHERE id_gites = $id_gites ORDER BY id_reservation DESC LIMIT 1";
+        $lastReserv = requete($SQLParam);
+        return $lastReserv;
+    }
+
     /**
      * Fonction qui permet de verifer des choses
      */
@@ -554,8 +565,43 @@
                     }
                 }
             break;
+
+            case "reservation": // Vérification à la réservation
+                global $pdo, $id_gites, $date_debut, $date_fin;
+                // Récuperer la dernière réservation
+                $lastReserv = lastReserv($id_gites);
+                // Récupérer les dernières dates
+                $lastDate_debut = $lastReserv["date_debut"];
+                $lastDate_fin = $lastReserv["date_fin"];
+                if (isset($lastDate_debut))
+                {
+                    // Vérifier que la date est disponible
+                    $SQLParam4 = "SELECT * FROM reservation WHERE $date_debut BETWEEN $lastDate_debut AND $lastDate_fin";
+                    //echo $SQLParam4;
+
+                    $verif = toCount($SQLParam4);
+                    if ($verif > 0)
+                    {
+                        $erreurMessage = "Ce gîte n'est pas disponible durant cette période.";
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+                
+                
+
+            break;
         }
     }
+
+   
 
     /**
      * Fonction permettant de valider une reservation

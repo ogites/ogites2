@@ -16,7 +16,7 @@
     //id du gite ou de la réservation
 
     //TODO 
-    $sql_delete_gite = "delete from reservation where id_gites = $id_gites";
+    $sql_delete_gite = "delete from reservation where id_reservation = $id_gites";
     //echo $sql_delete_gite;
     $response = $pdo->exec($sql_delete_gite);
 

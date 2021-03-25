@@ -30,11 +30,24 @@
     
     $libelle = $nom["libelle"];
 
-    //requete pour réservation du gite 
-    $sql = "insert into reservation(libelle, date_debut, date_fin, nb_personnes, date_reserv, id_gites, id_users, etat_reservation)"
-    ." values ('$libelle', '$date_debut', '$date_fin', $selectPersonne, NOW(), $id_gites, $id_users, 0)";
-    //echo $sql;
-    $result2 = $pdo->exec($sql);
+    if (verif("reservation"))
+    {
+        $erreurMessage = "Ce gîte n'est pas disponible durant cette période";
+        header("Location:info_gites2.php?id_gites=$id_gites&erreur=true");
 
-    header("Location:all_reservation.php");
+        
+    }
+    else
+    {
+        //requete pour réservation du gite 
+        $sql = "INSERT INTO reservation(libelle, date_debut, date_fin, nb_personnes, date_reserv, id_gites, id_users, etat_reservation)"
+        ." VALUES ('$libelle', '$date_debut', '$date_fin', $selectPersonne, NOW(), $id_gites, $id_users, 0)";
+        $result2 = requete($sql);
+
+        header("Location:all_reservation.php");
+
+    }
+    //echo $sql;
+    //$result2 = $pdo->exec($sql);
+
 ?>

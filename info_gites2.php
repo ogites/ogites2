@@ -154,6 +154,15 @@
                             document.getElementById("date_debut").required = true;
                             document.getElementById("date_fin").required = true;
                         </script>
+
+                        <?php
+                        if (isset($_REQUEST["erreur"]))
+                        {
+                            echo "<center><strong style='color: #FF0000'>Ce gîte n'est pas disponible durant cette période</strong></center>";
+                            echo "<br>";
+                        }
+                        ?>
+
                         <!-- Nombre de personnes -->
                         <?php 
                         $nb_personne_max = $Allgite["nb_personnes_max"];

@@ -84,7 +84,7 @@
                                                     <form action="delete_reserv.php" method="post">
                                                         <div class="modal-body">
                                                             <h5>Vous êtes sur le point d'annuler votre réservation.</h5>
-                                                            <input type="hidden" name="id_gites" value="<?php echo $info["id_gites"]; ?>">
+                                                            <input type="hidden" name="id_gites" value="<?php echo $info["id_reservation"]; ?>">
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Non</button>
                                                                 <button type="submit" class="btn btn-success">Oui</button>
