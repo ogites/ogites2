@@ -13,11 +13,11 @@
 
     if (isset($_POST["searchbar"]))
     {
-        $ville = $_POST["searchbar"];
+        $search = $_POST["searchbar"];
     }
     else
     {
-        $ville = "";
+        $search = "";
     }
 ?>
 
@@ -29,7 +29,7 @@
                 <form action="view_gites.php?query=search" method="POST">
                     <div class="input-group mb-2 border rounded-pill p-1 w-50">
                         <input type="search" placeholder="Chercher un lieu" aria-describedby="button-addon3"
-                            name="searchbar" class="form-control bg-none border-0" value="<?php echo $ville ?>">
+                            name="searchbar" class="form-control bg-none border-0" value="<?php echo $search ?>">
                         <div class="input-group-append border-0">
                             <button id="button-addon3" type="submit" class="btn btn-link text-success">
                                 <i class="fa fa-search"></i>
@@ -37,8 +37,7 @@
                         </div>
                     </div>
                     <button class="btn btn-success" type="submit">Recherche</button>
-                    <a href="view_gites.php?query=all" class="btn btn-warning"><span style="color:white;">Voir
-                            tout</span></a>
+                    <a href="view_gites.php?query=all" class="btn btn-warning"><span style="color:white;">Voir tout</span></a>
                 </form>
             </center>
         </div>
@@ -48,7 +47,8 @@
         //  Liste des gîtes en fonction de la ville
         if ($_REQUEST["query"] == "search")
         {
-            $SQLParam = getGitesByVille($ville);
+            $SQLParam = "SELECT * FROM gites "
+            . "WHERE libelle LIKE '%" . "$search" . "%' OR localisation LIKE '%" . "$search" . "%'";
         }
         else
         {
@@ -56,15 +56,15 @@
         }
         
         //$pdo =bd_connect();
-        $Myresult = $pdo->query($SQLParam);
-        $Myresult->setFetchMode(PDO::FETCH_ASSOC);
-        $nb_result = $Myresult->rowCount();
+        //echo $SQLParam;
+        $Myresult = toFetch($SQLParam);
+        $nb_result = toCount($SQLParam);
         if ($nb_result > 0)
         {
         ?>
         <br>
         <?php
-            if ($ville == "")
+            if ($search == "")
             {
             ?>
         <h1><strong>LISTE DE TOUS LES GÎTES.</strong></h1>
@@ -73,7 +73,7 @@
             else
             {
             ?>
-        <h1><strong>RÉSULTAT(S) POUR <?php echo strtoupper($ville) ?>.</strong></h1>
+        <h1><strong><?php echo $nb_result  ?> RÉSULTAT(S) POUR <?php echo strtoupper($search) ?>.</strong></h1>
         <?php
             }
             ?>
@@ -85,9 +85,9 @@
                         while($Allresponse = $Myresult->fetch())
                         {
                         ?>
-                    <div class="col-6">
+                    <div class="col-6" style="width:590px;">
                         <div class="col-12">
-                            <div class="card shadow-sm p-3 mb-5 bg-white rounded h-100">
+                            <div class="card shadow-sm p-3 mb-5 bg-white rounded h-100" style="width: 500px;">
                                 <?php
                                 $id_gites = $Allresponse["id_gites"];
                                 // Requête permettant d'obtenir une image de miniature pour un gîte
@@ -122,7 +122,7 @@
                                     <h5 class="card-title"><?php echo $Allresponse["libelle"] ?></h5>
                                     <!-- Ville du gîte du gîte -->
                                     <small>
-                                        <p class="card-text"><?php echo $Allresponse["localisation"] ?></p>
+                                        <p class="card-text"><i class="fa fa-map-marker"></i> <?php echo $Allresponse["localisation"] ?></p>
                                     </small>
                                     <!-- Description du gîte -->
                                     <strong>
@@ -132,9 +132,7 @@
                                     <?php 
                                         // Savoir si le gîte est disponible
                                         $SQLParam3 = "SELECT * FROM reservation WHERE id_gites = $id_gites";
-                                        $Myresult3 = $pdo->query($SQLParam3);
-                                        $Myresult3->setFetchMode(PDO::FETCH_ASSOC);
-                                        $info_reserv = $Myresult3->fetch();
+                                        $info_reserv = requete($SQLParam3);
 
                                         // Possibilité de réserver uniquement si l'on est connecté
                                         if(isset($_SESSION["id_users"]))

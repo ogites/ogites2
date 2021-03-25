@@ -66,13 +66,18 @@
                                 <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/index.php">Accueil <span class="sr-only">(current)</span></a>
                 		        </li>
-                		        <!--<li class="nav-item">
+                                <?php
+                                if (!isset($_SESSION['id_users']))
+                                {
+                                ?>
+                		        <li class="nav-item">
                   			        <a class="nav-link" href="/ogites2/presentation.php">Présentation</a>
                 		        </li>
     	    			        <li class="nav-item">
                 		  	        <a class="nav-link" href="/ogites2/about.php">À propos</a>
-                		        </li>-->
+                		        </li>
                                 <?php
+                                }
                             break;
 
                             // Accueil

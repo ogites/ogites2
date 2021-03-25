@@ -103,28 +103,21 @@
             <br>
             <div class="card-deck" id="cartouche-bas">
                <!-- Messagerie --> 
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-dark mb-3" style="max-width: auto;">
                     <div class="card-body white">
                         <a href="messagerie_admin.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-envelope white"></i> Messagerie</h5></a>
                         <p class="card-text white">Discuter avec les utilisateurs.</p>
                     </div>
                 </div>
-                <!-- Notifications -->
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-body white">
-                        <a href="notifications.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-bell white"></i> Notifications</h5></a>
-                        <p class="card-text white">Toutes les notifications reçues.</p>
-                    </div>
-                </div>
                 <!-- Journal de connexion -->
-                <div class="card text-white bg-dark mb-3" style="max-width: 19rem;">
+                <div class="card text-white bg-dark mb-3" style="max-width: auto;">
                     <div class="card-body white">
-                        <a href="journal_connexion.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-vcard white"></i> Journals de connexions</h5></a>
+                        <a href="journal_connexion.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-vcard white"></i> Journal des connexions</h5></a>
                         <p class="card-text white">Toutes les connexions effectuées.</p>
                     </div>
                 </div>
                 <!-- Statistiques -->
-                <div class="card text-white bg-dark mb-3" style="max-width: 19rem;">
+                <div class="card text-white bg-dark mb-3" style="max-width: auto;">
                     <div class="card-body white">
                         <a href="stats.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-area-chart white"></i> Statistiques</h5></a>
                         <p class="card-text white">Différentes statistiques.</p>

@@ -91,7 +91,7 @@
                         $infoFirstImage = requete("SELECT * FROM gites WHERE id_gites = $idFirstGite");
                         ?>
                         <div class="carousel-item active">
-                            <img src="<?php echo $firstImage["link_url"]  ?>" alt="">
+                            <img src="<?php echo $firstImage["link_url"]  ?>" alt="Image n°<?php echo $firstImage["id_images_gites"]  ?>">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5><strong style="color:#fff"><?php echo $infoFirstImage["libelle"]  ?></strong></h5>
                                 <p><strong style="color:#fff"><i class="fa fa-map-marker" style="color:#fff"></i> <?php echo $infoFirstImage["localisation"]  ?></strong></p>
@@ -102,7 +102,7 @@
                         {
                         ?>
                             <div class="carousel-item">
-                                <img src="<?php echo $image["link_url"]  ?>" alt="First slide">
+                                <img src="<?php echo $image["link_url"]  ?>" alt="Image n°<?php echo $image["id_images_gites"] ?>">
                                 <div class="carousel-caption d-none d-md-block">
                                     <?php
                                     $idGites = $image["id_gites"];
