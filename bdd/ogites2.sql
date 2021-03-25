@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 22 mars 2021 à 01:13
+-- Généré le : jeu. 25 mars 2021 à 19:13
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -63,7 +63,28 @@ INSERT INTO `connexion_log` (`id_connexion`, `id_users`, `date_connexion`) VALUE
 (3, 1, '2021-03-21 11:10:39'),
 (4, 1, '2021-03-21 11:52:45'),
 (5, 0, '2021-03-21 11:53:17'),
-(6, 1, '2021-03-21 12:23:45');
+(6, 1, '2021-03-21 12:23:45'),
+(7, 1, '2021-03-21 21:22:39'),
+(8, 1, '2021-03-23 08:02:30'),
+(9, 1, '2021-03-23 16:04:55'),
+(10, 15, '2021-03-23 16:08:06'),
+(11, 1, '2021-03-23 16:08:22'),
+(12, 15, '2021-03-23 16:08:43'),
+(13, 1, '2021-03-24 17:19:49'),
+(14, 1, '2021-03-24 17:42:17'),
+(15, 1, '2021-03-24 17:45:41'),
+(16, 15, '2021-03-24 21:07:40'),
+(17, 1, '2021-03-24 21:36:20'),
+(18, 15, '2021-03-24 22:18:21'),
+(19, 1, '2021-03-25 08:20:15'),
+(20, 15, '2021-03-25 10:03:21'),
+(21, 0, '2021-03-25 10:03:54'),
+(22, 0, '2021-03-25 10:31:59'),
+(23, 2, '2021-03-25 11:17:29'),
+(24, 1, '2021-03-25 11:56:09'),
+(25, 1, '2021-03-25 11:56:48'),
+(26, 2, '2021-03-25 11:57:15'),
+(27, 0, '2021-03-25 12:00:34');
 
 -- --------------------------------------------------------
 
@@ -129,7 +150,6 @@ INSERT INTO `images_gites` (`id_images_gites`, `libelle`, `id_gites`, `link_url`
 (15, '', 1, 'https://www.cybevasion.fr/thumb/500x375/gites/france/97/46386_572175_7.jpg'),
 (16, '', 2, 'https://www.cybevasion.fr/thumb/500x375/gites/france/97/58031_771325_32.jpg'),
 (17, '', 5, 'https://www.gites-de-france.com/sites/default/files/styles/gallery/public/images/412005/412005-12_4411_8948765f39744fa20fa896c870d62897.jpg?itok=MQlmwHMu'),
-(18, '', 0, 'https://www.cybevasion.fr/thumb/500x375/gites/france/97/59559_812340_33.jpg'),
 (19, '', 11, 'https://www.cybevasion.fr/thumb/500x375/gites/france/97/59559_812340_33.jpg');
 
 -- --------------------------------------------------------
@@ -153,22 +173,24 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id_message`, `expediteur`, `destinataire`, `contenu`, `etat_message`, `date_heure`, `type_message`) VALUES
-(1, 2, 1, 'test', 0, '2021-03-12 17:14:59', 2),
-(2, 2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 0, '2021-03-12 17:14:59', 2),
-(3, 2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 0, '2021-03-12 17:14:59', 2),
-(4, 2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 0, '2021-03-12 17:14:59', 2),
-(5, 1, 2, 'test envoi', 0, '2021-03-14 21:00:15', 2),
-(6, 1, 2, 'test requete', 0, '2021-03-15 02:06:58', 2),
-(13, 1, 2, 'nouveau test', 0, '2021-03-15 02:23:37', 2),
-(14, 1, 2, 'ça fonctionne !!!!', 0, '2021-03-15 02:23:45', 2),
-(15, 1, 2, 'super', 0, '2021-03-15 02:23:50', 2),
-(16, 1, 2, 'test factorisation', 0, '2021-03-16 01:40:09', 2),
-(17, 1, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 0, '2021-03-16 11:50:46', 2),
+(1, 2, 1, 'test', 1, '2021-03-12 17:14:59', 2),
+(2, 2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 1, '2021-03-12 17:14:59', 2),
+(3, 2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 1, '2021-03-12 17:14:59', 2),
+(4, 2, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 1, '2021-03-12 17:14:59', 2),
+(5, 1, 2, 'test envoi', 1, '2021-03-14 21:00:15', 2),
+(6, 1, 2, 'test requete', 1, '2021-03-15 02:06:58', 2),
+(13, 1, 2, 'nouveau test', 1, '2021-03-15 02:23:37', 2),
+(14, 1, 2, 'ça fonctionne !!!!', 1, '2021-03-15 02:23:45', 2),
+(15, 1, 2, 'super', 1, '2021-03-15 02:23:50', 2),
+(16, 1, 2, 'test factorisation', 1, '2021-03-16 01:40:09', 2),
+(17, 1, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, nunc eget fringilla fermentum, metus lorem elementum lectus, sit amet sagittis nisi massa sit amet sem. Vestibulum dui dui, luctus in feugiat at, fermentum sed sapien. Duis non interdum nisl. Praesent ut maximus lectus, in laoreet lacus. Donec rhoncus bibendum gravida. Quisque sit amet eros laoreet est lobortis congue. Phasellus quis accumsan diam. Suspendisse dignissim ultrices ornare. Morbi et hendrerit lorem. Integer eget molestie libero. Cras lacinia mollis egestas.', 1, '2021-03-16 11:50:46', 2),
 (18, 1, 2, 'ouebrgçzrbgçzurbgzirubgzg', 1, '2021-03-16 12:18:27', 2),
-(19, 1, 2, 'test 2', 0, '2021-03-20 22:49:11', 2),
-(20, 1, 0, 'bonjour', 0, '2021-03-21 11:19:59', 2),
-(21, 1, 2, 'test encore', 0, '2021-03-21 11:35:10', 2),
-(22, 0, 1, 'salut', 0, '2021-03-21 12:23:35', 2);
+(19, 1, 2, 'test 2', 1, '2021-03-20 22:49:11', 2),
+(20, 1, 0, 'bonjour', 1, '2021-03-21 11:19:59', 2),
+(21, 1, 2, 'test encore', 1, '2021-03-21 11:35:10', 2),
+(22, 0, 1, 'salut', 1, '2021-03-21 12:23:35', 2),
+(23, 1, 0, 'Comment allez vous ?', 1, '2021-03-24 21:38:10', 2),
+(24, 1, 2, 'merci beaucoup !', 1, '2021-03-24 21:39:57', 2);
 
 -- --------------------------------------------------------
 
@@ -195,7 +217,7 @@ CREATE TABLE `reservation` (
 INSERT INTO `reservation` (`id_reservation`, `libelle`, `date_debut`, `date_fin`, `nb_personnes`, `date_reserv`, `id_gites`, `id_users`, `etat_reservation`) VALUES
 (5, 'Carre Royal', '2021-02-16', '2021-02-22', 4, '2021-02-01', 4, 1, 1),
 (6, 'ALPINA', '2021-03-10', '2021-04-08', 2, '2021-01-31', 5, 1, 1),
-(7, 'Villa Bagatelle', '2021-02-16', '2021-02-24', 2, '2021-02-01', 1, 1, 0);
+(18, 'La Koumbala', '2021-03-25', '2021-03-31', 1, '2021-03-25', 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -213,7 +235,6 @@ CREATE TABLE `type_message` (
 --
 
 INSERT INTO `type_message` (`id_tm`, `libelle`) VALUES
-(1, 'notification'),
 (2, 'message'),
 (3, 'message_admin');
 
@@ -242,7 +263,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_users`, `pseudo`, `nom`, `prenom`, `email`, `tel`, `mdp`, `date_inscription`, `id_categorie`) VALUES
 (0, 'ogitesteam', 'ogites', 'team', 'admin@ogites.com', 0, '$2y$10$jMj4q6ixnUGtRWiMt//PfujKgSjMw7UOPg.ft0M7zdBb1z2LJeK.2', '2021-03-20', 1),
 (1, 'kanjo', 'Kancel', 'Jonathan', 'kanjo@gmail.com', 0, '$2y$10$2e/c6FDXOKJ9rVntAayRwuwjTz0CJmVguGq5FtPV0FYZmZWbzOlMG', '2021-01-16', 1),
-(2, 'ygt', 'GOUPTAR-TICKET', 'Yanissa', 'ygt@gmail.com', 0, '$2y$10$KZwNpEcUQWUpsm42B2UNIuXKWy.qisiANJUdZqbB3etSzhSAkz5iS', '2021-01-24', 1);
+(2, 'ygt', 'GOUPTAR-TICKET', 'Yanissa', 'ygt@gmail.com', 0, '$2y$10$KZwNpEcUQWUpsm42B2UNIuXKWy.qisiANJUdZqbB3etSzhSAkz5iS', '2021-01-24', 2),
+(15, 'ogitesproprio', 'ogites', 'proprio', 'ogitesproprio@gmail.com', 690161010, '$2y$10$Iwn.0h.RwiM/bxt0eP/MGeh.pKelN4JXxO8oCVAFSsXTD1dTl7Npe', '2021-03-23', 3);
 
 --
 -- Index pour les tables déchargées
@@ -310,7 +332,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `connexion_log`
 --
 ALTER TABLE `connexion_log`
-  MODIFY `id_connexion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_connexion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `gites`
@@ -328,13 +350,13 @@ ALTER TABLE `images_gites`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `type_message`
@@ -346,7 +368,7 @@ ALTER TABLE `type_message`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
