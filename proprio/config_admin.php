@@ -138,6 +138,76 @@ function header_admin($onglet)
                     <li class="nav-item">
                         <a class="nav-link" href="/ogites2/login-system/param.php">Mon compte</a>
                     </li>
+                    <?php
+                        require_once '../login-system/config.php';
+                        // Récupérer le nombre de réservation à ce jour
+                        $SQLParam = "SELECT * FROM reservation as R INNER JOIN gites as G ON R.id_gites = G.id_gites "
+                        . "WHERE DATE(date_reserv) = DATE(NOW()) AND G.createur = 0";
+                        $nbReserv = toCount($SQLParam);
+
+                        // Si il y a des réservations à ce jour
+                        if ($nbReserv > 0)
+                        {
+                    ?>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="notifier-btn"><i class="bi bi-bell-fill"></i></a>
+                        </li>
+                        <span class='badge' style='width: 20px;height: 20px;border-radius: 10px;background:#F02F0C;color:#fff;' id='notifier-btn'>
+                            <?php echo $nbReserv  ?>
+                        </span>
+                        <script>
+                            document.getElementById("notifier-btn").onclick = notifier;
+
+                            /* Quand le document sera chargé */
+                            document.addEventListener('DOMContentLoaded', function () {
+                            
+                                /* Vérifie si le navigateur est compatible avec les notifications */
+                                if (!Notification) {
+                                    alert('Le navigateur ne supporte pas les notifications.');
+                                }
+                                /* Si le navigateur prend en charge les notifications,
+                                on demande la permission si les notifications ne sont pas permises */
+                                    else if (Notification.permission !== 'granted')
+                                        Notification.requestPermission();
+                            });
+                        
+                        
+                            function notifier() {
+                                /* On demande la permission si les notifications ne sont pas permises */
+                                if (Notification.permission !== 'granted')
+                                    Notification.requestPermission();
+                                else {
+                                    
+                                    // Affichage du message avec le logo de l'application
+                                    var notification = new Notification('OGÎTES TEAM', {
+                                        icon: '/ogites2/images/new-logo.png',
+                                        body: 'Il y a de nouvelle(s) réservation(s)',
+                                        //image: "",
+                                    });
+                                    
+                                    // Redirection vers la page de gestion des réservations
+                                    notification.onclick = function () {
+                                        window.open("gerer_reserv.php");
+                                    
+                                    };
+                                
+                                    // Disparition de la notification au bout de 5 sec
+                                    notification.onshow = function () {
+                                        setTimeout(notification.close.bind(notification), 5000);
+                                    }
+                                
+                                }
+                            }
+                        </script>
+                    <?php
+                    } else {
+                    ?>
+                    <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="bi bi-bell"></i></a>
+                    </li>
+                    <?php
+                    }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>
                     </li>

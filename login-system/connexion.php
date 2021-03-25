@@ -133,7 +133,7 @@
                         aria-describedby="basic-addon1">
                 </div>
         </div>
-
+        <br>
         <!-- Bouton -->
         <div style="text-align:center;">
             <input type="submit" class="btn btn-success" name="submit" value="Se connecter"><br><br>

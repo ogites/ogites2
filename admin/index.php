@@ -116,13 +116,6 @@
                         <p class="card-text white">Toutes les connexions effectuées.</p>
                     </div>
                 </div>
-                <!-- Statistiques -->
-                <div class="card text-white bg-dark mb-3" style="max-width: auto;">
-                    <div class="card-body white">
-                        <a href="stats.php" class="stretched-link"><h5 class="card-title white"><i class="fa fa-area-chart white"></i> Statistiques</h5></a>
-                        <p class="card-text white">Différentes statistiques.</p>
-                    </div>
-                </div>
             </div>
 		</div>
 	</div>

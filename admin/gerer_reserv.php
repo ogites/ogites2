@@ -26,7 +26,7 @@
 
             <?php
             // Récupérer la liste des réservations
-            $SQLParam = "SELECT * FROM reservation ORDER BY date_debut";
+            $SQLParam = "SELECT * FROM reservation ORDER BY date_debut DESC";
             $Myresult = toFetch($SQLParam);
             $nb_reserv = toCount($SQLParam);
             //echo $nb_reserv;
@@ -53,7 +53,21 @@
                     {
                     ?>
                     <tr>
-                        <td><?php echo $xc; ?></td>
+                        <td>
+                            <?php
+                                $datejour = date("Y-m-d");
+                                if ($info_reserv["date_reserv"] == $datejour)
+                                {
+                                    echo "<button class='btn btn-danger btn-sm'>"
+                                    . "<strong class='white'>New</strong>"
+                                    . "</button>";
+                                }
+                                else 
+                                {
+                                    echo $xc; 
+                                }
+                            ?>
+                        </td>
                         <?php
                         // Récupération du libelle du gîte réservé
                         $id_gites = $info_reserv["id_gites"];
@@ -79,24 +93,26 @@
                         <!-- Nom du client ayant réservé -->
                         <td><?php echo $nom_prenom_user ?></td>
                         <!-- État de la réservation (Effectué ou non) -->
-                        <?php
-                        $etat_reservation = $info_reserv["etat_reservation"];
-                        //echo $etat_reservation;
-                        // Si la réservation a été validée
-                        if ($etat_reservation == 1)
-                        {
-                        ?>
-                        <td><button class="btn btn-success"><i class="fa fa-check white"></i></button></td>
-                        <?php
-                        }
-                        // Si la réservation est en cours
-                        else
-                        {
-                        ?>
-                        <td><button class="btn btn-danger"><i class="fa fa-clock-o white"></i></button></td>
-                        <?php
-                        }
-                        ?>
+                        <td>
+                            <?php
+                            $etat_reservation = $info_reserv["etat_reservation"];
+                            //echo $etat_reservation;
+                            // Si la réservation a été validée
+                            if ($etat_reservation == 1)
+                            {
+                            ?>
+                            <button class="btn btn-success"><i class="fa fa-check white"></i></button>
+                            <?php
+                            }
+                            // Si la réservation est en cours
+                            else
+                            {
+                            ?>
+                            <button class="btn btn-danger"><i class="fa fa-clock-o white"></i></button>
+                            <?php
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <?php
                         $xc++;

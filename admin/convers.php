@@ -95,6 +95,7 @@
                     <?php
                     while ($messages = $Myresult->fetch())
                     {
+                        
                     ?>
                     <tr>
                         <td>
@@ -134,6 +135,10 @@
                                 $date_envoi = datefr($date_heure[0]);  
                                 // Définition de l'heure d'envoi
                                 $heure_envoi = substr($date_heure[1], 0, -3);
+                                // Marquer le message comme lu
+                                $id_message = $messages["id_message"];
+                                //echo $id_message;
+                                valideMessage($id_message);
                                 ?>
                                 <p style="text-align: right;"><small><?php echo $date_envoi . " " . $heure_envoi ?></small></p>
                             </div>

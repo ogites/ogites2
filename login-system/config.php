@@ -174,6 +174,32 @@
                         <li class="nav-item">
     	    				<a class="nav-link" href="/ogites2/login-system/param.php">Mon compte</a>
                 		</li>
+                        <?php
+                        if ($_SESSION["id_categorie"] == 2){
+                            $SQLParam = "SELECT * FROM messages WHERE expediteur = " . $_SESSION['id_users']
+                            . " OR destinataire = " . $_SESSION['id_users'] . " ORDER BY id_message DESC LIMIT 1";
+                            //echo $SQLParam;
+                            $response = requete($SQLParam);
+
+                            if ($response["etat_message"] == 1)
+                            {
+                        ?>
+                            <li class="nav-item">
+                                <a href="/ogites2/messagerie.php" class="nav-link"><i class="fa fa-envelope-o"></i></a>
+                            </li>
+                        <?php
+                            } 
+                            else 
+                            {
+                            ?>
+                            <li class="nav-item">
+                                <a href="/ogites2/messagerie.php" class="nav-link"><i class="fa fa-envelope"></i></a>
+                            </li>
+                            <span class='badge' style='width: 20px;height: 20px;border-radius: 10px;background:#F02F0C;color:#fff;' id='notifier-btn'> </span>
+                            <?php
+                            }
+                        }
+                        ?>
                 		<li class="nav-item">
     	    				<a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>
                 		</li>
@@ -539,6 +565,16 @@
         global $pdo;
 
         requete("UPDATE reservation SET etat_reservation = 1 WHERE id_reservation = $id_reserv");
+    }
+
+    /**
+     * Fonction permettant de marquer un message comme vu
+     */
+    function valideMessage($id_message)
+    {
+        global $pdo;
+
+        requete("UPDATE messages SET etat_message = 1 WHERE id_message = $id_message");
     }
 ?>
 

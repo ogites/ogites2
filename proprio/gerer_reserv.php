@@ -31,7 +31,7 @@
             // Récupérer la liste des réservations
             $SQLParam = "SELECT * FROM reservation as P1 "
             . "LEFT JOIN gites as P2 ON P1.id_gites = P2.id_gites "
-            . "WHERE P2.createur = $id_users";
+            . "WHERE P2.createur = $id_users ORDER BY date_debut DESC";
             $Myresult = $pdo->query($SQLParam);
             $Myresult->setFetchMode(PDO::FETCH_ASSOC);
             $nb_reserv = $Myresult->rowCount();
@@ -58,7 +58,21 @@
                     {
                     ?>
                     <tr>
-                        <td><?php echo $xc; ?></td>
+                        <td>
+                            <?php
+                                $datejour = date("Y-m-d");
+                                if ($info_reserv["date_reserv"] == $datejour)
+                                {
+                                    echo "<button class='btn btn-danger btn-sm'>"
+                                    . "<strong class='white'>New</strong>"
+                                    . "</button>";
+                                }
+                                else 
+                                {
+                                    echo $xc; 
+                                }
+                            ?>
+                        </td>
                         <?php
                         // Récupération du libelle du gîte réservé
                         $id_gites = $info_reserv["id_gites"];
