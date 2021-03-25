@@ -139,7 +139,7 @@
                             <label for="date_debut" class="col-sm-5 col-form-label" required>Date d'arrivée</label>
                             <div class="col-sm-7">
                                 <input type="date" class="form-control" name="date_debut"
-                                    min="<?php echo date('Y-m-d'); ?>">
+                                    min="<?php echo date('Y-m-d'); ?>" id="date_debut">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -147,9 +147,13 @@
                             <label for="date_fin" class="col-sm-5 col-form-label" required>Date de départ</label>
                             <div class="col-sm-7">
                                 <input type="date" class="form-control" name="date_fin"
-                                    min="<?php echo date('Y-m-d'); ?>">
+                                    min="<?php echo date('Y-m-d'); ?>" id="date_fin">
                             </div>
                         </div>
+                        <script>
+                            document.getElementById("date_debut").required = true;
+                            document.getElementById("date_fin").required = true;
+                        </script>
                         <!-- Nombre de personnes -->
                         <?php 
                         $nb_personne_max = $Allgite["nb_personnes_max"];
