@@ -199,6 +199,58 @@
                             <?php
                             }
                         }
+                            if ($_SESSION["id_users"] == 2)
+                            {
+                        ?>
+                            <li class="nav-item">
+                                <a href="#" class="btn btn-primary" id="notifier-btn">Devenir propriétaire</a>
+                            </li>
+                            <script>
+                            document.getElementById("notifier-btn").onclick = notifier;
+
+                            /* Quand le document sera chargé */
+                            document.addEventListener('DOMContentLoaded', function () {
+                            
+                                /* Vérifie si le navigateur est compatible avec les notifications */
+                                if (!Notification) {
+                                    alert('Le navigateur ne supporte pas les notifications.');
+                                }
+                                /* Si le navigateur prend en charge les notifications,
+                                on demande la permission si les notifications ne sont pas permises */
+                                    else if (Notification.permission !== 'granted')
+                                        Notification.requestPermission();
+                            });
+                        
+                        
+                            function notifier() {
+                                /* On demande la permission si les notifications ne sont pas permises */
+                                if (Notification.permission !== 'granted')
+                                    Notification.requestPermission();
+                                else {
+                                    
+                                    // Affichage du message avec le logo de l'application
+                                    var notification = new Notification('OGÎTES TEAM', {
+                                        icon: '/ogites2/images/new-logo.png',
+                                        body: 'Les administrateurs vont bientôt vous recontacter !',
+                                        //image: "",
+                                    });
+                                    
+                                    // Redirection vers la page de gestion des réservations
+                                    notification.onclick = function () {
+                                        window.open("index.php")
+                                    
+                                    };
+                                
+                                    // Disparition de la notification au bout de 5 sec
+                                    notification.onshow = function () {
+                                        setTimeout(notification.close.bind(notification), 5000);
+                                    }
+                                
+                                }
+                            }
+                        </script>
+                        <?php
+                            }
                         ?>
                 		<li class="nav-item">
     	    				<a class="nav-link" href="/ogites2/login-system/deconnexion.php"><i class="fa fa-sign-out"></i></a>
