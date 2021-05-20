@@ -25,7 +25,7 @@
         <div class="container">
             <?php
                 // Récupérer la liste des connexions
-                $SQLParam = "SELECT * FROM connexion_log";
+                $SQLParam = "SELECT * FROM connexion_log ORDER BY date_connexion DESC";
                 $response = toFetch($SQLParam);
                 $nb_connexion = toCount($SQLParam);
 
@@ -37,8 +37,8 @@
                 <thead>
                     <tr class="bg-dark">
                         <th class="white" style="width: 5%;">#</th>
-                        <th class="white">Utilisateurs</th>
-                        <th class="white">Catégories</th>
+                        <th class="white">Utilisateur</th>
+                        <th class="white">Catégorie</th>
                         <th class="white">Date Heure</th>
                     </tr>
                 </thead>
@@ -55,7 +55,7 @@
                         $id_users = $info_connexion["id_users"];
                         $info_users = requete("SELECT * FROM users WHERE id_users = $id_users");
                         ?>
-                        <td><?php echo "@" . $info_users["pseudo"];  ?></td>
+                        <td><?php echo "@<strong>" . $info_users["pseudo"]  . "</strong>";?></td>
                         <!-- Catégorie  -->
                         <?php
                         $SQLParam2 = "SELECT libelle FROM categorie AS P1 "
@@ -76,6 +76,7 @@
                         <td><?php echo $date . " " . $heure  ?></td>
                     </tr>
                     <?php
+                        $xc++;
                     }
                     ?>
                 </tbody>

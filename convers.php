@@ -6,10 +6,9 @@
     $title = "Conversation - Ô'GÎTES";
     // Ajout du header
     require_once 'head.php';
-    require_once 'config_admin.php';
     // Initialisation de la session
     session_start();
-    header_admin(1);
+    header_page(0);
     // Définition des variables
     $expediteur = $_REQUEST["expediteur"];
     //echo $expediteur;
@@ -22,7 +21,7 @@
         <!-- Titre de la page -->
         <h1 style="float: left;"><strong>CONVERSATION</strong></h1>
         <!-- Bouton Retour -->
-        <a href="messagerie_admin.php" class="btn btn-info btn-lg" style="float: right">
+        <a href="messagerie.php" class="btn btn-info btn-lg" style="float: right">
             <strong class="white">RETOUR</strong>
         </a>
         <!-- Nettoyage du flottement -->
@@ -33,7 +32,6 @@
             <style>
                 table {
                     width: 100%;
-                    scroll-behavior: smooth;
                 }
 
                 thead, tbody, tr, td, th { display: block; }
@@ -89,18 +87,13 @@
             <table class="table table-hover">
                 <thead>
                     <tr class="bg-primary">
-                        <th>
-                            <span class="white" style="float:left;">Liste des messages</span>
-                            <span class="white" style="float:right;">(Du plus récent au plus ancien)</span>
-                            <div style="clear: both;"></div>
-                        </th>
+                        <th class="white">Liste des messages</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     while ($messages = $Myresult->fetch())
                     {
-                        
                     ?>
                     <tr>
                         <td>
@@ -137,9 +130,9 @@
                                 <?php 
                                 // Définition de la date et de l'heure d'envoi du message
                                 $date_heure = explode(" ", $messages["date_heure"]);
-                                $date_envoi = datefr($date_heure[0]);  
+                                $date_envoi = datefr($date_heure[0]); 
                                 // Définition de l'heure d'envoi
-                                $heure_envoi = substr($date_heure[1], 0, -3);
+                                $heure_envoi = substr($date_heure[1], 0, -3); 
                                 // Marquer le message comme lu
                                 $id_message = $messages["id_message"];
                                 //echo $id_message;
@@ -172,7 +165,7 @@
 
 <?php
 	// Ajout de script Javascript
-	require_once '../javascripts.php';
+	require_once 'javascripts.php';
 	// Ajout du footer
-	require_once '../footer.php';
+	require_once 'footer.php';
 ?>

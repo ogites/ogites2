@@ -1,15 +1,14 @@
 <!--
-    Espace messagerie entre un admin et les autres utilisateurs
+    Espace messagerie entre un client et les propriétaires
 -->
 <?php
     // Titre de la page
-    $title = "Messagerie Admin - Ô'GÎTES";
+    $title = "Messagerie - Ô'GÎTES";
     // Ajout du header
     require_once 'head.php';
-    require_once 'config_admin.php';
     // Initialisation de la session
     session_start();
-    header_admin(1);
+    header_page(0);
     // Définition des variables
     $nom = $_SESSION["nom"];
     $prenom = $_SESSION["prenom"];
@@ -19,7 +18,7 @@
 <main role="main" class="flex-shrink-0">
     <div class="container-fluid" id="index">
         <!-- Titre de la page -->
-        <h1 style="float: left;"><strong>MESSAGERIE ADMINISTRATEUR</strong></h1>
+        <h1 style="float: left;"><strong>MESSAGERIE</strong></h1>
         <!-- Bouton Retour -->
         <a href="index.php" class="btn btn-info btn-lg" style="float: right;"><strong class="white">RETOUR</strong></a>
         <!-- Nettoyage du flottement -->
@@ -36,6 +35,11 @@
                 if ($nb_messages > 0) {
             ?>
             <br>
+            <style>
+                .white {
+                    color: #fff;
+                }
+            </style>
             <table class="table table-hover" style="width: 100%;">
                 <thead>
                     <tr class="bg-primary">
@@ -102,7 +106,6 @@
                         </td>
                     </tr>
                     <?php
-                            $xc++;
                         }
                     ?>
                 </tbody>
@@ -122,7 +125,7 @@
 
 <?php
 	// Ajout de script Javascript
-	require_once '../javascripts.php';
+	require_once 'javascripts.php';
 	// Ajout du footer
-	require_once '../footer.php';
+	require_once 'footer.php';
 ?>

@@ -1,72 +1,95 @@
 body {
-  padding-top: 5rem;
+    padding-top: 5rem;
 }
 
 .footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 code {
-  font-size: 80%;
+    font-size: 80%;
 }
 
-.box{
-  width:100%;
-  height: auto;
-  position:relative;
-  border:1px solid #BBB;
- // background:#eee;
+.box {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border: 1px solid #bbb;
+    // background:#eee;
 }
 
 .ribbon {
-  position: absolute;
-  right: -5px; top: -5px;
-  z-index: 1;
-  overflow: hidden;
-  width: 75px; height: 75px;
-  text-align: center;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: center;
 }
 .ribbon span {
-  font-size: 9px;
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: bold; line-height: 20px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg); /* Needed for Safari */
-  width: 100px; display: block;
-  background: #79A70A;
-  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
-  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-  position: absolute;
-  top: 19px; right: -21px;
+    font-size: 9px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg); /* Needed for Safari */
+    width: 100px;
+    display: block;
+    background: #79a70a;
+    background: linear-gradient(#9bc90d 0%, #79a70a 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 19px;
+    right: -21px;
 }
 .ribbon span::before {
-  content: '';
-  position: absolute;
-  left: 0px; top: 100%;
-  z-index: -1;
-  border-left: 3px solid #79A70A;
-  border-right: 3px solid transparent;
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid #79A70A;
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    z-index: -1;
+    border-left: 3px solid #79a70a;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #79a70a;
 }
 .ribbon span::after {
-  content: '';
-  position: absolute;
-  right: 0%; top: 100%;
-  z-index: -1;
-  border-right: 3px solid #79A70A;
-  border-left: 3px solid transparent;
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid #79A70A;
+    content: "";
+    position: absolute;
+    right: 0%;
+    top: 100%;
+    z-index: -1;
+    border-right: 3px solid #79a70a;
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #79a70a;
 }
 
-.red span {background: linear-gradient(#F70505 0%, #8F0808 100%);}
-.red span::before {border-left-color: #8F0808; border-top-color: #8F0808;}
-.red span::after {border-right-color: #8F0808; border-top-color: #8F0808;}
+.red span {
+    background: linear-gradient(#f70505 0%, #8f0808 100%);
+}
+.red span::before {
+    border-left-color: #8f0808;
+    border-top-color: #8f0808;
+}
+.red span::after {
+    border-right-color: #8f0808;
+    border-top-color: #8f0808;
+}
 
-.blue span {background: linear-gradient(#2989d8 0%, #1e5799 100%);}
-.blue span::before {border-left-color: #1e5799; border-top-color: #1e5799;}
-.blue span::after {border-right-color: #1e5799; border-top-color: #1e5799;}
+.blue span {
+    background: linear-gradient(#2989d8 0%, #1e5799 100%);
+}
+.blue span::before {
+    border-left-color: #1e5799;
+    border-top-color: #1e5799;
+}
+.blue span::after {
+    border-right-color: #1e5799;
+    border-top-color: #1e5799;
+}

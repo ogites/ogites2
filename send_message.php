@@ -27,7 +27,7 @@
 
     // Envoi du message
     sendMessage($expediteur, $destinataire, $contenu);
-    echo 1;
+    //echo 1;
     // Retour vers la page d'origine
-    //header("Location: convers.php?expediteur=$destinataire&destinataire=$expediteur");
+    header("Location: convers.php?expediteur=$destinataire&destinataire=$expediteur");
 ?>

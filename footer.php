@@ -7,9 +7,14 @@
         if (isset($_SESSION["id_users"]))
         {
         ?>
+        <style>
+            .hovered:hover {
+                text-decoration: underline;
+            }
+        </style>
         <div style="width:50%; margin:0 auto;">
-            <a href="/ogites2/presentation.php"><span class="text-muted" style="float: left;">Présentation</span></a>
-            <a href="/ogites2/about.php"><span class="text-muted" style="float: right;">À propos</span></a>
+            <a href="/ogites2/presentation.php"><span class="text-muted hovered" style="float: left;">Présentation</span></a>
+            <a href="/ogites2/about.php"><span class="text-muted hovered" style="float: right;">À propos</span></a>
         </div>
         <?php
         }

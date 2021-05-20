@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description (3 lignes max.)</label>
-                    <textarea rows="6" type="text" class="form-control" name="description" placeholder="Description du gîte" required></textarea>
+                    <textarea maxlength="500" rows="3" type="text" class="form-control" name="description" placeholder="Description du gîte" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="link_url">Lien du gîte</label>

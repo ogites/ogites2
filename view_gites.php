@@ -26,6 +26,14 @@
         <div class="container">
             <center>
                 <!-- Barre de recherche -->
+                <style>
+                    .form-control:focus {
+                        box-shadow: 0 0 0 0.2rem rgba(100, 100, 100, 0);
+                    } 
+                    .form-control {
+                        border-radius: 10px;
+                    }
+                </style>
                 <form action="view_gites.php?query=search" method="POST">
                     <div class="input-group mb-2 border rounded-pill p-1 w-50">
                         <input type="search" placeholder="Chercher un lieu" aria-describedby="button-addon3"

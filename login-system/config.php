@@ -387,8 +387,8 @@
     {
         global $pdo;
 
-        $SQLParam = "INSERT INTO messages (expediteur, destinataire, contenu, type_message)"
-        . " VALUES ('$expediteur', '$destinataire', '$contenu', '2')";
+        $SQLParam = "INSERT INTO messages (expediteur, destinataire, contenu, etat_message, type_message)"
+        . " VALUES ('$expediteur', '$destinataire', '$contenu', '0', '2')";
         $response = requete($SQLParam);
     }
 

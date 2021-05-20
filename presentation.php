@@ -19,11 +19,11 @@
     </div>
     <br><br>
     <div class="container">
-        <center>
-            <!-- Image de présentation -->
+        <!--<center>
+            <!-- Image de présentation 
             <img id="main_img" src="https://www.auberge-impossible.com/wp-content/uploads/2018/02/guadeloupe-plage.jpg" alt="">
-        </center>
         <br><br>
+        </center>-->
         <!-- Texte d'introduction de la guadeloupe -->
         <h5>
             Posée sur l’arc des Petites Antilles, la Guadeloupe est constituée en réalité d'un archipel de
